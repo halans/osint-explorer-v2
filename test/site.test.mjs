@@ -11,6 +11,7 @@ import { dirname, join } from 'node:path';
 import {
   BASE_URL, slugify, slugifyAll, escapeHtml, escapeJsonLd, hostOf,
   mapKindToSchemaType, groupByCategory, leadSentence, categoryLeadSentence, renderToolCard,
+  buildToolListItem, buildCategoryJsonLd, buildHomeJsonLd,
 } from '../scripts/build-site.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -117,4 +118,31 @@ test('renderToolCard marks retired tools nofollow and shows a Retired badge; liv
 test('renderToolCard falls back to placeholder text when description is missing', () => {
   const t = { name: 'X', url: 'https://example.com', kind: 'software', access: 'unknown', targets: [], regions: [], retired: false, description: null };
   assert.match(renderToolCard(t), /No description verified yet\./);
+});
+
+test('buildToolListItem maps kind to a schema.org type and includes description only when present', () => {
+  const withDesc = buildToolListItem({ name: 'X', url: 'https://x.example', kind: 'dataset', description: 'd' }, 1);
+  assert.equal(withDesc.item['@type'], 'Dataset');
+  assert.equal(withDesc.item.description, 'd');
+  assert.equal(withDesc.position, 1);
+  const noDesc = buildToolListItem({ name: 'X', url: 'https://x.example', kind: 'dataset', description: null }, 2);
+  assert.equal('description' in noDesc.item, false);
+});
+
+test('buildCategoryJsonLd emits a BreadcrumbList and a CollectionPage whose ItemList matches the category tool count', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const category = categories[0];
+  const jsonLd = buildCategoryJsonLd(category, { baseUrl: BASE_URL });
+  const types = jsonLd['@graph'].map((n) => n['@type']);
+  assert.ok(types.includes('BreadcrumbList'));
+  const collection = jsonLd['@graph'].find((n) => n['@type'] === 'CollectionPage');
+  assert.equal(collection.mainEntity.itemListElement.length, category.tools.length);
+  assert.equal(collection.url, `${BASE_URL}category/${category.slug}/`);
+});
+
+test('buildHomeJsonLd lists every category as an ItemList entry', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const jsonLd = buildHomeJsonLd(ds, categories, { baseUrl: BASE_URL });
+  const collection = jsonLd['@graph'].find((n) => n['@type'] === 'CollectionPage');
+  assert.equal(collection.mainEntity.itemListElement.length, categories.length);
 });

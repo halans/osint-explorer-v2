@@ -132,3 +132,54 @@ export function renderToolCard(t) {
   <div class="meta">${renderBadges(t)}</div>
 </article>`;
 }
+
+export function buildToolListItem(t, position) {
+  const item = { '@type': mapKindToSchemaType(t.kind), name: t.name, url: t.url };
+  if (t.description) item.description = t.description;
+  return { '@type': 'ListItem', position, item };
+}
+
+export function buildCategoryJsonLd(category, { baseUrl }) {
+  const catUrl = `${baseUrl}category/${category.slug}/`;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: baseUrl },
+          { '@type': 'ListItem', position: 2, name: category.name, item: catUrl },
+        ],
+      },
+      {
+        '@type': 'CollectionPage',
+        name: `${category.name} — OSINT Explorer`,
+        url: catUrl,
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: category.tools.map((t, i) => buildToolListItem(t, i + 1)),
+        },
+      },
+    ],
+  };
+}
+
+export function buildHomeJsonLd(ds, categories, { baseUrl }) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'WebSite', name: 'OSINT Explorer', url: baseUrl, description: leadSentence(ds) },
+      {
+        '@type': 'CollectionPage',
+        name: 'OSINT Explorer — Categories',
+        url: baseUrl,
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: categories.map((c, i) => ({
+            '@type': 'ListItem', position: i + 1, name: c.name, url: `${baseUrl}category/${c.slug}/`,
+          })),
+        },
+      },
+    ],
+  };
+}
