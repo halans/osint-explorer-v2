@@ -12,7 +12,7 @@ import {
   BASE_URL, slugify, slugifyAll, escapeHtml, escapeJsonLd, hostOf,
   mapKindToSchemaType, groupByCategory, leadSentence, categoryLeadSentence, renderToolCard,
   buildToolListItem, buildCategoryJsonLd, buildHomeJsonLd,
-  renderHomePage, renderCategoryPage, render404,
+  renderHomePage, renderCategoryPage, render404, buildSitemap, buildRobotsTxt,
 } from '../scripts/build-site.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -205,4 +205,20 @@ test('render404 is marked noindex and links home', () => {
   const html = render404({ baseUrl: BASE_URL });
   assert.match(html, /name="robots" content="noindex"/);
   assert.match(html, /href="\.\/"/);
+});
+
+test('buildSitemap has exactly one <url> per category plus the homepage', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const paths = ['', ...categories.map((c) => `category/${c.slug}/`)];
+  const xml = buildSitemap(paths, { baseUrl: BASE_URL, lastmod: ds.generatedAt.slice(0, 10) });
+  const count = [...xml.matchAll(/<url>/g)].length;
+  assert.equal(count, categories.length + 1);
+  assert.match(xml, new RegExp(`<loc>${BASE_URL}</loc>`));
+  assert.match(xml, new RegExp(`<loc>${BASE_URL}category/${categories[0].slug}/</loc>`));
+});
+
+test('buildRobotsTxt allows everything and points at the sitemap under the base URL', () => {
+  const txt = buildRobotsTxt(BASE_URL);
+  assert.match(txt, /Allow: \//);
+  assert.match(txt, new RegExp(`Sitemap: ${BASE_URL}sitemap\\.xml`));
 });

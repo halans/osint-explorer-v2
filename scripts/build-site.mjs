@@ -259,3 +259,23 @@ export function render404({ baseUrl }) {
   const body = `<main class="shell"><h1>404 — page not found</h1><p><a href="./">Back to OSINT Explorer</a></p></main>`;
   return basePage({ head, body, jsonLd: { '@context': 'https://schema.org', '@type': 'WebPage', name: '404 Not Found' }, cssHref: 'assets/style.css' });
 }
+
+export function buildSitemap(paths, { baseUrl, lastmod }) {
+  const urls = paths.map((p) => `  <url>
+    <loc>${baseUrl}${p}</loc>
+    <lastmod>${lastmod}</lastmod>
+  </url>`).join('\n');
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>
+`;
+}
+
+export function buildRobotsTxt(baseUrl) {
+  return `User-agent: *
+Allow: /
+
+Sitemap: ${baseUrl}sitemap.xml
+`;
+}
