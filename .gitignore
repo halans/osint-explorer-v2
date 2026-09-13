@@ -33,3 +33,6 @@ coverage/
 .worktrees/
 
 .serena/
+
+# Generated static site (CI builds this fresh on every deploy)
+site/
