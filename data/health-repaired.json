@@ -1,0 +1,98 @@
+{
+  "checkedAt": "2026-09-13T03:05:33.733Z",
+  "total": 8,
+  "counts": {
+    "bot-walled": 2,
+    "alive": 6
+  },
+  "results": [
+    {
+      "id": "corporate-profiling-and-website-osint-domain-search-dns-dumpster",
+      "name": "DNSDumpster",
+      "url": "https://dnsdumpster.com/pricing",
+      "status": "bot-walled",
+      "httpStatus": 403,
+      "finalUrl": null,
+      "title": "Just a moment...",
+      "ms": 298,
+      "error": null
+    },
+    {
+      "id": "country-specific-asic-search-our-registers",
+      "name": "ASIC Search Our Registers",
+      "url": "https://www.asic.gov.au/online-services/search-asic-registers",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": "Search ASIC registers | ASIC",
+      "ms": 1068,
+      "error": null
+    },
+    {
+      "id": "country-specific-digital-earth-australia-open-data-on-aws",
+      "name": "Digital Earth Australia Open Data on AWS",
+      "url": "https://data.dea.ga.gov.au/",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": "Digital Earth Australia - Public Data (DEV)",
+      "ms": 478,
+      "error": null
+    },
+    {
+      "id": "country-specific-nbn-co-network-outages",
+      "name": "NBN Co Network Outages",
+      "url": "https://www.nbnco.com.au/support/network-status",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": "Network status and outages | nbn",
+      "ms": 482,
+      "error": null
+    },
+    {
+      "id": "country-specific-qfes-bushfire-current-incidents-feed",
+      "name": "QFES Bushfire Current Incidents Feed",
+      "url": "https://publiccontent-gis-psba-qld-gov-au.s3.amazonaws.com/content/Feeds/BushfireCurrentIncidents/bushfireAlert.json",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": null,
+      "ms": 1066,
+      "error": null
+    },
+    {
+      "id": "country-specific-sa-cfs-current-incidents-feed",
+      "name": "SA CFS Current Incidents Feed",
+      "url": "https://data.eso.sa.gov.au/prod/cfs/criimson/cfs_current_incidents.json",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": null,
+      "ms": 902,
+      "error": null
+    },
+    {
+      "id": "cryptocurrency-arkham-intelligence",
+      "name": "Arkham Intelligence",
+      "url": "https://intel.arkm.com/",
+      "status": "bot-walled",
+      "httpStatus": 403,
+      "finalUrl": "https://arkm.com/",
+      "title": "Just a moment...",
+      "ms": 183,
+      "error": null
+    },
+    {
+      "id": "mapping-capella-space-open-data",
+      "name": "Capella Space Open Data",
+      "url": "https://www.capellaspace.com/solution/sar-data",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": "Synthetic Aperture Radar (SAR) Data | Capella",
+      "ms": 125,
+      "error": null
+    }
+  ]
+}

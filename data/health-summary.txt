@@ -1,0 +1,10 @@
+{
+  "alive": 329,
+  "redirected": 60,
+  "bot-walled": 115,
+  "unreachable": 7,
+  "inconclusive": 17,
+  "dead": 10,
+  "server-error": 4
+}
+wrote data/health.json

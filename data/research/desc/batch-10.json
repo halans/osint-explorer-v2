@@ -1,0 +1,42 @@
+{
+  "batch": 10,
+  "enrichedAt": "2026-09-13T00:00:00Z",
+  "entries": [
+    {
+      "id": "website-archives-webpage-archive",
+      "description": "Snapshot and cache service that saves a permanent, timestamped copy of a webpage on demand",
+      "targets": ["domain"],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": ["web-archive", "snapshot", "page-caching"],
+      "confidence": "verified",
+      "nameSuggestion": "archive.today",
+      "notes": null
+    },
+    {
+      "id": "website-archives-wayback-machine",
+      "description": "Historical archive of over 900 billion web pages, searchable by URL and date",
+      "targets": ["domain"],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": ["web-archive", "history", "snapshot"],
+      "confidence": "inferred",
+      "nameSuggestion": "Wayback Machine",
+      "notes": "Crawl returned unrelated content (an academic paper) instead of the real homepage; description based on the site's well-known identity as the Internet Archive's Wayback Machine."
+    },
+    {
+      "id": "website-archives-ghostarchive-a-website-archive",
+      "description": "Archives webpages and YouTube videos to a permanent snapshot, designed to resist link rot and takedowns",
+      "targets": ["domain", "video"],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": ["web-archive", "video-archive", "snapshot"],
+      "confidence": "verified",
+      "nameSuggestion": "Ghostarchive",
+      "notes": null
+    }
+  ]
+}

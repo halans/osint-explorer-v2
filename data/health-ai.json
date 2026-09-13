@@ -1,0 +1,177 @@
+{
+  "checkedAt": "2026-09-13T03:03:44.616Z",
+  "total": 15,
+  "counts": {
+    "alive": 9,
+    "redirected": 4,
+    "dead": 1,
+    "bot-walled": 1
+  },
+  "results": [
+    {
+      "id": "artificial-intelligence-ai-incident-database",
+      "name": "AI Incident Database",
+      "url": "https://incidentdatabase.ai/",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": null,
+      "ms": 453,
+      "error": null
+    },
+    {
+      "id": "artificial-intelligence-aiaaic-repository",
+      "name": "AIAAIC Repository",
+      "url": "https://www.aiaaic.org/aiaaic-repository",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": null,
+      "ms": 528,
+      "error": null
+    },
+    {
+      "id": "artificial-intelligence-dutch-national-algorithm-register",
+      "name": "Dutch National Algorithm Register",
+      "url": "https://algoritmes.overheid.nl/en",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://algoritmes.overheid.nl/nl",
+      "title": "Het algoritmeregister van de Nederlandse overheid",
+      "ms": 1483,
+      "error": null
+    },
+    {
+      "id": "artificial-intelligence-epoch-ai-data",
+      "name": "Epoch AI Data",
+      "url": "https://epoch.ai/data",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": "Data on the Trajectory of AI | Epoch AI",
+      "ms": 481,
+      "error": null
+    },
+    {
+      "id": "artificial-intelligence-geospy",
+      "name": "GeoSpy",
+      "url": "https://geospy.ai/",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://graylark.com/geospy",
+      "title": "GeoSpy Is Now Raven | Official Site by Graylark",
+      "ms": 580,
+      "error": null
+    },
+    {
+      "id": "artificial-intelligence-gpt-researcher",
+      "name": "GPT Researcher",
+      "url": "https://github.com/assafelovic/gpt-researcher",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": "GitHub - assafelovic/gpt-researcher: An autonomous agent that conducts deep research on any data using any LLM providers · GitHub",
+      "ms": 977,
+      "error": null
+    },
+    {
+      "id": "artificial-intelligence-gptzero",
+      "name": "GPTZero",
+      "url": "https://gptzero.me/",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": "AI Detector - Free AI Checker for ChatGPT, GPT-5 &amp; Gemini",
+      "ms": 509,
+      "error": null
+    },
+    {
+      "id": "artificial-intelligence-hive-moderation-ai-generated-content-detection",
+      "name": "Hive Moderation (AI-Generated Content Detection)",
+      "url": "https://hivemoderation.com/ai-generated-content",
+      "status": "dead",
+      "httpStatus": 404,
+      "finalUrl": null,
+      "title": null,
+      "ms": 603,
+      "error": null
+    },
+    {
+      "id": "artificial-intelligence-hugging-face-hub-models",
+      "name": "Hugging Face Hub (Models)",
+      "url": "https://huggingface.co/models",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": "Models – Hugging Face",
+      "ms": 515,
+      "error": null
+    },
+    {
+      "id": "artificial-intelligence-lmarena-chatbot-arena",
+      "name": "LMArena (Chatbot Arena)",
+      "url": "https://lmarena.ai/leaderboard",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://arena.ai/leaderboard",
+      "title": "Arena Leaderboard | Compare &amp; Benchmark the Best Frontier AI Models",
+      "ms": 823,
+      "error": null
+    },
+    {
+      "id": "artificial-intelligence-odap-observatoire-des-algorithmes-publics",
+      "name": "Odap — Observatoire des algorithmes publics",
+      "url": "https://odap.fr/",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": "Observatoire des algorithmes publics",
+      "ms": 797,
+      "error": null
+    },
+    {
+      "id": "artificial-intelligence-open-deep-research-langchain",
+      "name": "Open Deep Research (LangChain)",
+      "url": "https://github.com/langchain-ai/open_deep_research",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": "GitHub - langchain-ai/open_deep_research · GitHub",
+      "ms": 964,
+      "error": null
+    },
+    {
+      "id": "artificial-intelligence-osint-mcp-server-badchars",
+      "name": "osint-mcp-server (badchars)",
+      "url": "https://github.com/badchars/osint-mcp-server",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": null,
+      "ms": 800,
+      "error": null
+    },
+    {
+      "id": "artificial-intelligence-picarta",
+      "name": "Picarta",
+      "url": "https://picarta.ai/",
+      "status": "bot-walled",
+      "httpStatus": 403,
+      "finalUrl": null,
+      "title": "Just a moment...",
+      "ms": 474,
+      "error": null
+    },
+    {
+      "id": "artificial-intelligence-vane-formerly-perplexica",
+      "name": "Vane (formerly Perplexica)",
+      "url": "https://github.com/ItzCrazyKns/Perplexica",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/ItzCrazyKns/Vane",
+      "title": "GitHub - ItzCrazyKns/Vane: Vane is an AI-powered answering engine. · GitHub",
+      "ms": 878,
+      "error": null
+    }
+  ]
+}

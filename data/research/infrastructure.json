@@ -1,0 +1,215 @@
+{
+  "stream": "infrastructure",
+  "researchedAt": "2026-09-13T00:00:00Z",
+  "additions": [
+    {
+      "name": "GreyNoise Community",
+      "url": "https://viz.greynoise.io/",
+      "description": "Free IP lookup that tells you whether an address is internet background noise (mass scanners) or a benign known service, cutting alert triage time.",
+      "category": "Corporate Profiling & Website OSINT",
+      "subcategory": "Technical Artefacts",
+      "targets": ["ip"],
+      "access": "freemium",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": ["ip-intelligence", "noise", "threat-intel"],
+      "evidenceUrl": "https://docs.greynoise.io/docs/using-the-greynoise-community-api",
+      "notes": "Unauthenticated: ~10 lookups/day. Free account with a business email (non-Gmail/Hotmail/etc.): 50 combined lookups/week across API + Visualizer. Full historical/tag data is paid."
+    },
+    {
+      "name": "JARM (Salesforce)",
+      "url": "https://github.com/salesforce/jarm",
+      "description": "Open-source active TLS server fingerprinting scanner that hashes ten crafted Client Hello responses to cluster servers by TLS stack, useful for spotting C2 frameworks like Cobalt Strike.",
+      "category": "Corporate Profiling & Website OSINT",
+      "subcategory": "Technical Artefacts",
+      "targets": ["domain", "ip"],
+      "access": "free",
+      "kind": "software",
+      "regions": [],
+      "tags": ["jarm", "tls-fingerprint", "c2-hunting"],
+      "evidenceUrl": "https://github.com/salesforce/jarm",
+      "notes": "Free Python CLI/library; JARM fingerprints are now searchable inside Censys, Shodan, FOFA and Hunt.io rather than only run locally."
+    },
+    {
+      "name": "Hunt.io",
+      "url": "https://hunt.io/",
+      "description": "Threat-hunting search engine indexing internet-wide JARM/JA4T fingerprints, favicon hashes and HTTP response bodies to pivot from one malicious host to an operator's full infrastructure.",
+      "category": "Corporate Profiling & Website OSINT",
+      "subcategory": "Technical Artefacts",
+      "targets": ["ip", "domain"],
+      "access": "freemium",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": ["c2-hunting", "jarm", "favicon-hash", "threat-intel"],
+      "evidenceUrl": "https://hunt.io/glossary/jarm-fingerprinting",
+      "notes": "Free tier gives limited daily searches of its HuntSQL/Advanced Search dataset; full historical querying and API access require a paid plan."
+    },
+    {
+      "name": "ipctl.io",
+      "url": "https://ipctl.io/",
+      "description": "ASN, BGP route and netblock-ownership lookup tool for tracing an IP or prefix back to its announcing network and upstream providers.",
+      "category": "Corporate Profiling & Website OSINT",
+      "subcategory": "Technical Artefacts",
+      "targets": ["ip", "domain"],
+      "access": "freemium",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": ["asn", "bgp", "netblock", "routing"],
+      "evidenceUrl": "https://ipctl.io/",
+      "notes": "Basic ASN/prefix/route lookups are free in the browser; bulk and API access require a paid key."
+    },
+    {
+      "name": "RPKI Validator / RIPE RPKI Dashboard",
+      "url": "https://rpki-validator.ripe.net/",
+      "description": "Checks whether an IP prefix has a valid Route Origination Authorization (ROA), flagging BGP hijacks and unauthorized route announcements for a given ASN or netblock.",
+      "category": "Corporate Profiling & Website OSINT",
+      "subcategory": "Technical Artefacts",
+      "targets": ["ip"],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": ["rpki", "bgp", "roa", "hijack-detection"],
+      "evidenceUrl": "https://rpki-validator.ripe.net/",
+      "notes": "Free, no account needed; run by RIPE NCC, one of the five Regional Internet Registries."
+    },
+    {
+      "name": "DomScan",
+      "url": "https://domscan.net/",
+      "description": "Unified domain-intelligence API and web console that aggregates WHOIS/RDAP, DNS records, SSL certificate data and subdomains for a target domain in a single query.",
+      "category": "Corporate Profiling & Website OSINT",
+      "subcategory": "Technical Artefacts",
+      "targets": ["domain"],
+      "access": "freemium",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": ["whois", "dns", "aggregator", "api"],
+      "evidenceUrl": "https://domscan.net/",
+      "notes": "Free tier includes a limited number of monthly lookups; higher volume and full API access require a paid plan."
+    },
+    {
+      "name": "ScanSearch",
+      "url": "https://scansearch.net/",
+      "description": "On-demand internet scanning search engine that runs fresh Nmap-grade port/service scans against a target IP or domain rather than relying only on a stale historical database.",
+      "category": "Corporate Profiling & Website OSINT",
+      "subcategory": "Technical Artefacts",
+      "targets": ["ip", "domain"],
+      "access": "freemium",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": ["port-scan", "internet-scan", "service-detection"],
+      "evidenceUrl": "https://scansearch.net/",
+      "notes": "A handful of free scans per day without an account; subscription (~$30/mo tier) unlocks unlimited/scheduled scans."
+    },
+    {
+      "name": "OpenSanctions",
+      "url": "https://www.opensanctions.org/",
+      "description": "Consolidated, deduplicated database of sanctions lists, PEP registries and criminal watchlists from 100+ official sources, searchable by name or queryable via a fuzzy-matching API.",
+      "category": "Corporate Profiling & Website OSINT",
+      "subcategory": "Sanctions, Industry Tracking & World Leaders",
+      "targets": ["person", "company"],
+      "access": "freemium",
+      "kind": "database",
+      "regions": [],
+      "tags": ["sanctions", "pep", "screening", "api"],
+      "evidenceUrl": "https://www.opensanctions.org/api/",
+      "notes": "Free API keys are issued to journalists/researchers/non-profits for the /match and /search endpoints; commercial screening use requires a paid API contract."
+    },
+    {
+      "name": "OCCRP Aleph Pro",
+      "url": "https://aleph.occrp.org/",
+      "description": "Investigative-data search platform that cross-references leaked archives, corporate registries and government records to trace beneficial ownership, financial flows and persons of interest.",
+      "category": "Corporate Profiling & Website OSINT",
+      "subcategory": "Corporate Lookup Tools",
+      "targets": ["company", "person", "document"],
+      "access": "free-registration",
+      "kind": "database",
+      "regions": [],
+      "tags": ["beneficial-ownership", "leaks", "investigative-data", "corporate-registry"],
+      "evidenceUrl": "https://www.occrp.org/en/announcement/aleph-pro-frequently-asked-questions-on-the-future-of-occrps-investigative-data-platform",
+      "notes": "Public aleph.occrp.org instance stays free for open records; access to protected leaked datasets requires a vetted application (~72hr review). Migrated to the new 'Aleph Pro' SaaS stack in Dec 2025; nonprofit journalism gets Aleph Pro free forever, commercial tiers launching through 2026."
+    },
+    {
+      "name": "ipinfo.io",
+      "url": "https://ipinfo.io/",
+      "description": "IP geolocation and ASN/company lookup API returning city-level location, hosting provider, ASN, VPN/proxy and abuse-contact data for a given IP address.",
+      "category": "Corporate Profiling & Website OSINT",
+      "subcategory": "Technical Artefacts",
+      "targets": ["ip"],
+      "access": "freemium",
+      "kind": "api",
+      "regions": [],
+      "tags": ["ip-geolocation", "asn", "vpn-detection"],
+      "evidenceUrl": "https://ipinfo.io/pricing",
+      "notes": "50,000 free API lookups/month without a credit card; VPN/proxy detection and higher volumes require a paid plan."
+    }
+  ],
+  "changes": [
+    {
+      "name": "Shodan",
+      "url": "https://www.shodan.io/",
+      "change": "paywalled",
+      "detail": "Free-account web search now returns only a small handful of results per query (commonly cited as 2-10) with filters disabled; full search requires a paid membership, though the separate free InternetDB API (no account) still gives basic port/vuln data per IP.",
+      "evidenceUrl": "https://www.shodan.io/pricing"
+    },
+    {
+      "name": "Censys",
+      "url": "https://search.censys.io/",
+      "change": "paywalled",
+      "detail": "Censys retired its old free-forever 'Legacy Search' UI and moved everyone to the credit-metered Censys Platform; free accounts now get a small monthly credit allotment and lookup-only (non-scriptable) search rather than unrestricted querying.",
+      "evidenceUrl": "https://censys.com/pricing"
+    },
+    {
+      "name": "SecurityTrails",
+      "url": "https://securitytrails.com/",
+      "change": "paywalled",
+      "detail": "SecurityTrails (now under Recorded Future) no longer publishes a usable free public tier; historical DNS, WHOIS history and subdomain data require a paid API/SOC plan, with pricing available only on request.",
+      "evidenceUrl": "https://securitytrails.com/"
+    },
+    {
+      "name": "RiskIQ PassiveTotal",
+      "url": "https://community.riskiq.com/",
+      "change": "shutdown",
+      "newUrl": "https://www.microsoft.com/en-us/security/business/siem-and-xdr/microsoft-defender-threat-intelligence",
+      "detail": "The standalone RiskIQ/PassiveTotal community platform is effectively dead (broken logins, expired/mismatched TLS certs); its passive-DNS successor Microsoft Defender Threat Intelligence is itself being retired and folded into Defender XDR as an enterprise-only add-on around August 2026, removing the free/community access path entirely.",
+      "evidenceUrl": "https://www.microsoft.com/en-us/security/business/siem-and-xdr/microsoft-defender-threat-intelligence"
+    },
+    {
+      "name": "ZoomEye",
+      "url": "https://www.zoomeye.ai/",
+      "change": "moved",
+      "detail": "ZoomEye migrated its main site and API from zoomeye.org/api.zoomeye.org (JWT auth) to zoomeye.ai and api.zoomeye.ai/v2 with a new API-KEY header scheme; the free tier remains points-based but old integration URLs and legacy auth are deprecated.",
+      "newUrl": "https://api.zoomeye.ai/",
+      "evidenceUrl": "https://www.zoomeye.ai/"
+    },
+    {
+      "name": "DNSDumpster",
+      "url": "https://dnsdumpster.com/",
+      "change": "paywalled",
+      "detail": "DNSDumpster now runs on a documented HackerTarget-operated free tier of 50 lookups/day (down from effectively unlimited casual use), with a paid 'Plus' tier at 200/day plus bulk/API access for higher volume.",
+      "newUrl": "https://dnsdumpster.com/pricing",
+      "evidenceUrl": "https://dnsdumpster.com/pricing"
+    },
+    {
+      "name": "Open Ownership Register",
+      "url": "https://register.openownership.org/",
+      "change": "shutdown",
+      "detail": "The public Open Ownership Register prototype was closed on 29 November 2024; Open Ownership shifted to publishing raw BODS beneficial-ownership datasets for download/reuse rather than hosting a live public search register.",
+      "newUrl": "https://bods-data.openownership.org/",
+      "evidenceUrl": "https://www.openownership.org/en/topics/open-ownership-register/"
+    },
+    {
+      "name": "BuiltWith",
+      "url": "https://builtwith.com/",
+      "change": "moved",
+      "detail": "Single-domain technology lookups on the public site remain free indefinitely, but BuiltWith's API surface now splits into a free-forever Free API/Trends API and a separate metered Domain/Lists/Relationships API starting near $295/month for programmatic or bulk access.",
+      "evidenceUrl": "https://builtwith.com/plans/api"
+    },
+    {
+      "name": "WhoisXML API",
+      "url": "https://www.whoisxmlapi.com/",
+      "change": "paywalled",
+      "detail": "WHOIS/RDAP, subdomain and DNS-history lookups are limited to a small free monthly credit allotment (commonly around 500-1000 credits) tied to a required registered account; sustained or bulk OSINT use requires a paid subscription.",
+      "evidenceUrl": "https://www.whoisxmlapi.com/whois-api-pricing.php"
+    }
+  ]
+}

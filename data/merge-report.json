@@ -1,0 +1,90 @@
+{
+  "mergedAt": "2026-09-13T03:05:39.177Z",
+  "health": {
+    "files": [
+      "health.json",
+      "health-research.json",
+      "health-gaps.json",
+      "health-ai.json",
+      "health-repaired.json"
+    ],
+    "applied": 733,
+    "staleSkipped": 8,
+    "counts": {
+      "alive": 458,
+      "redirected": 81,
+      "bot-walled": 148,
+      "unreachable": 10,
+      "inconclusive": 21,
+      "dead": 18,
+      "server-error": 5
+    }
+  },
+  "descriptions": {
+    "files": 10,
+    "applied": 529,
+    "unverified": 13,
+    "renamed": 255
+  },
+  "research": {
+    "files": 8,
+    "added": 191,
+    "skippedDuplicate": 22,
+    "changesApplied": 20,
+    "streams": {
+      "ai-tooling": {
+        "additions": 16,
+        "duplicates": 1,
+        "changes": 1
+      },
+      "australia": {
+        "additions": 44,
+        "duplicates": 0,
+        "changes": 0
+      },
+      "gaps": {
+        "additions": 49,
+        "duplicates": 1,
+        "changes": 0
+      },
+      "geospatial": {
+        "additions": 13,
+        "duplicates": 1,
+        "changes": 3
+      },
+      "infrastructure": {
+        "additions": 9,
+        "duplicates": 1,
+        "changes": 7
+      },
+      "people": {
+        "additions": 18,
+        "duplicates": 4,
+        "changes": 2
+      },
+      "social": {
+        "additions": 27,
+        "duplicates": 4,
+        "changes": 4
+      },
+      "verification": {
+        "additions": 15,
+        "duplicates": 10,
+        "changes": 3
+      }
+    },
+    "unmatchedChanges": 13
+  },
+  "overrides": {
+    "applied": 6
+  },
+  "warnings": [],
+  "dedupe": {
+    "collisions": 5,
+    "folded": 6
+  },
+  "validation": {
+    "errors": 0,
+    "sample": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "osint-explorer",
+  "version": "2.0.0",
+  "description": "Enriched, link-checked directory of OSINT tools, datasets and live feeds, with a shared search engine powering a CLI and a self-contained offline web page.",
+  "type": "module",
+  "license": "CC-BY-SA-4.0",
+  "engines": { "node": ">=20" },
+  "bin": { "osint": "bin/osint.mjs" },
+  "exports": {
+    ".": "./src/search.mjs",
+    "./schema": "./src/schema.mjs"
+  },
+  "files": ["src", "bin", "scripts", "data", "dist", "docs", "README.md"],
+  "scripts": {
+    "normalise": "node scripts/normalise.mjs",
+    "check": "node scripts/check-links.mjs",
+    "merge": "node scripts/merge.mjs --strict",
+    "build": "node scripts/build.mjs",
+    "data": "npm run normalise && npm run merge && npm run build",
+    "test": "node --test test/",
+    "validate": "node bin/osint.mjs validate"
+  },
+  "keywords": ["osint", "open-source-intelligence", "directory", "dataset", "search", "cli", "offline"],
+  "dependencies": {},
+  "devDependencies": {}
+}

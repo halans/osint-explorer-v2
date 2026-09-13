@@ -1,0 +1,35 @@
+{
+  "note": "Hand corrections applied after the automated passes. Broken-URL fixups verified 2026-09-13 via curl -I -L and Exa.",
+  "tools": {
+    "country-specific-asic-search-our-registers": {
+      "url": "https://www.asic.gov.au/online-services/search-asic-registers",
+      "description": "Search ASIC's public registers for Australian companies, business names, and organisations by name, ACN, ABN, or document.",
+      "notes": "Old asic.gov.au/online-services/search-our-registers/ path 404s. ASIC restructured its site; the current landing page is asic.gov.au/online-services/search-asic-registers, which links on to the ASIC Connect search tools. Verified 200 OK 2026-09-13."
+    },
+    "country-specific-digital-earth-australia-open-data-on-aws": {
+      "url": "https://data.dea.ga.gov.au/",
+      "description": "Geoscience Australia's public index of Digital Earth Australia satellite data hosted on AWS S3 (bucket dea-public-data).",
+      "notes": "The Digital Earth Australia listing was removed from registry.opendata.aws (404) and is no longer present in the AWS Open Data Registry catalog (checked via search). Geoscience Australia now publishes the same S3-backed public dataset directly at data.dea.ga.gov.au, documented at knowledge.dea.ga.gov.au/guides/setup/AWS/data_and_metadata/. Verified 200 OK 2026-09-13."
+    },
+    "country-specific-nbn-co-network-outages": {
+      "url": "https://www.nbnco.com.au/support/network-status",
+      "description": "Check nbn network status and current or planned outages at a specific Australian address.",
+      "notes": "Old /support/network-outages path 404s. nbn Co restructured its support site; /support/network-status is the current outage/status checker (301 target of the legacy corporate-information/network-status-redirect link). Verified 200 OK 2026-09-13."
+    },
+    "country-specific-qfes-bushfire-current-incidents-feed": {
+      "url": "https://publiccontent-gis-psba-qld-gov-au.s3.amazonaws.com/content/Feeds/BushfireCurrentIncidents/bushfireAlert.json",
+      "description": "Machine-readable JSON feed of current bushfire and permitted-burn incidents in Queensland, updated every 30 minutes.",
+      "notes": "QFES was renamed Queensland Fire Department (QFD) on 1 July 2024 and qfes.qld.gov.au now redirects to fire.qld.gov.au, where the old /data/alert/bushfireAlert.json path 404s. The live JSON feed is now served from an S3 bucket referenced by the Queensland Government Open Data Portal dataset 'Queensland Fire Department current bushfire incidents' (data.qld.gov.au CKAN API package_show). Human-readable equivalent: https://www.fire.qld.gov.au/Current-Incidents. Verified 200 OK 2026-09-13."
+    },
+    "country-specific-sa-cfs-current-incidents-feed": {
+      "url": "https://data.eso.sa.gov.au/prod/cfs/criimson/cfs_current_incidents.json",
+      "description": "Direct JSON feed of current SA Country Fire Service incidents, sourced from the CFS CRIIMSON dispatch system.",
+      "notes": "Old data.sa.gov.au/data/dataset/cfs-current-incidents slug 404s; the dataset was renamed 'south-australian-country-fire-service-current-incidents-rss-feed' on data.sa.gov.au, whose JSON resource points to this data.eso.sa.gov.au endpoint. Verified 200 OK 2026-09-13."
+    },
+    "mapping-capella-space-open-data": {
+      "url": "https://www.capellaspace.com/solution/sar-data",
+      "description": "Capella Space's Open Data Program: free archive SAR scenes (SLC, GEO, GEC, SICD, SIDD, CPHD) via a public AWS S3 bucket.",
+      "notes": "capellaspace.com/community/open-data 404s after a site redesign; the Open Data Program section now lives on the SAR Data solutions page. The dataset is also mirrored in the AWS Open Data Registry at https://registry.opendata.aws/capella_opendata/ (also verified 200 OK) if an AWS-registry-style link is preferred. Verified 200 OK 2026-09-13."
+    }
+  }
+}

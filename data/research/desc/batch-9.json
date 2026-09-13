@@ -1,0 +1,1271 @@
+{
+  "batch": 9,
+  "enrichedAt": "2026-09-13T00:00:00Z",
+  "entries": [
+    {
+      "id": "cryptocurrency-thtective",
+      "description": "Ethereum wallet investigation tool that visualizes connections between addresses using WalletConnect/Alchemy data",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "ethereum",
+        "wallet-tracing",
+        "blockchain-forensics"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-breadcrumbs-investigation-tool",
+      "description": "Blockchain analytics platform for tracing on-chain crypto transactions and visualizing wallet activity",
+      "targets": [
+        "crypto"
+      ],
+      "access": "freemium",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "blockchain-analytics",
+        "on-chain-tracing",
+        "investigation"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-coin-market-cap",
+      "description": "Live prices, market capitalization, trading volume and circulating supply for thousands of cryptocurrencies",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "crypto-prices",
+        "market-data"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-onada-historic-currency-converter",
+      "description": "Converts between cryptocurrencies and fiat currencies using OANDA's daily average bid/ask exchange rates",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "currency-conversion",
+        "exchange-rates"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-blockchair-universal-blockchain-explorer-and-search-engine",
+      "description": "Explorer covering 48 blockchains, letting you search addresses, transactions and blocks across Bitcoin, Ethereum and others",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "blockchain-explorer",
+        "multi-chain",
+        "address-lookup"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Blockchair - Universal Blockchain Explorer",
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-block-chair",
+      "description": "Blockchair's Bitcoin explorer for looking up BTC blocks, transactions, addresses and network statistics",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "bitcoin",
+        "blockchain-explorer",
+        "address-lookup"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Blockchair - Bitcoin",
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-block-cypher",
+      "description": "BlockCypher's live Bitcoin explorer showing recent blocks, transactions and current fee estimates",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "bitcoin",
+        "blockchain-explorer"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "BlockCypher - Bitcoin",
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-blockchain",
+      "description": "Blockchain.com explorer for browsing Bitcoin, Ethereum and Bitcoin Cash blocks, transactions and addresses",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "bitcoin",
+        "ethereum",
+        "blockchain-explorer"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Blockchain.com Explorer",
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-ethereum-eth-blockchain-explorer-etherchain-org-2022",
+      "description": "Ethereum blockchain explorer for looking up ETH blocks, transactions and addresses",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "ethereum",
+        "blockchain-explorer"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Page timed out during crawl; description based on the site's well-known function as an Ethereum explorer."
+    },
+    {
+      "id": "cryptocurrency-block-chair-2",
+      "description": "Blockchair's Ethereum explorer for looking up ETH blocks, transactions, addresses and token transfers",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "ethereum",
+        "blockchain-explorer",
+        "address-lookup"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Blockchair - Ethereum",
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-ether-scan",
+      "description": "Ethereum blockchain explorer for blocks, transactions, addresses, gas prices and token activity",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "ethereum",
+        "blockchain-explorer",
+        "gas-fees"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Etherscan",
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-monero-blocks-xmr-block-explorer",
+      "description": "Monero block explorer listing recent blocks, transaction pool activity and network hashrate",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "monero",
+        "blockchain-explorer",
+        "privacy-coin"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-xmrchain-net-monero-explorer",
+      "description": "Monero blockchain explorer covering mainnet, testnet and stagenet with transaction pool and network stats",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "monero",
+        "blockchain-explorer",
+        "privacy-coin"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-block-chair-3",
+      "description": "Blockchair's Dash explorer for looking up blocks, transactions, addresses and network statistics",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "dash",
+        "blockchain-explorer"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Blockchair - Dash",
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-block-chair-4",
+      "description": "Blockchair's Litecoin explorer for looking up blocks, transactions, addresses and network statistics",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "litecoin",
+        "blockchain-explorer"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Blockchair - Litecoin",
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-block-chair-5",
+      "description": "Blockchair's Bitcoin Cash explorer for looking up blocks, transactions, addresses and network statistics",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "bitcoin-cash",
+        "blockchain-explorer"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Blockchair - Bitcoin Cash",
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-coin-atm-radar-search-for-crypto-atms",
+      "description": "Map of Bitcoin and cryptocurrency ATM/teller locations worldwide, searchable by address or city",
+      "targets": [
+        "crypto",
+        "geo"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "crypto-atm",
+        "map",
+        "bitcoin"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Page failed to load during crawl (server error); description based on the site's well-known function."
+    },
+    {
+      "id": "cryptocurrency-coin-map-searching-for-businesses-who-take-crypto",
+      "description": "Map of merchants worldwide that accept Bitcoin and other cryptocurrency payments",
+      "targets": [
+        "crypto",
+        "geo"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "bitcoin",
+        "merchant-map",
+        "payments"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "BTC Map",
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-crypto-logos-cryptocurrency-logo-files",
+      "description": "Downloadable transparent PNG and vector SVG logo files for major cryptocurrencies",
+      "targets": [
+        "crypto",
+        "image"
+      ],
+      "access": "free",
+      "kind": "directory",
+      "regions": [],
+      "tags": [
+        "logos",
+        "branding",
+        "crypto-assets"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-scam-search",
+      "description": "Searchable database of reported scammers by email, username, phone number, crypto address or profile photo",
+      "targets": [
+        "email",
+        "phone",
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "scam-database",
+        "fraud",
+        "reverse-image-search"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "ScamSearch",
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-bitcoin-who-s-who-searching-for-website-appearances-of-a-wallet",
+      "description": "Looks up a Bitcoin address for its balance, community tags, owner hints and scam reports",
+      "targets": [
+        "crypto"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "bitcoin",
+        "address-lookup",
+        "scam-reports"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "BitcoinWhosWho",
+      "notes": null
+    },
+    {
+      "id": "cryptocurrency-chain-abuse-wallet-address-abuse-database",
+      "description": "Database of reported crypto scam addresses and URLs, covering phishing, rug pulls and extortion cases",
+      "targets": [
+        "crypto",
+        "domain"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "scam-database",
+        "fraud",
+        "wallet-address"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Chainabuse",
+      "notes": null
+    },
+    {
+      "id": "search-engines-google",
+      "description": "General-purpose web search engine",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "search",
+      "regions": [],
+      "tags": [
+        "general-search",
+        "web-search"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "search-engines-google-hacking-database",
+      "description": "Catalog of Google dorks - advanced search queries for surfacing exposed files and misconfigured sites",
+      "targets": [
+        "domain",
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "google-dorks",
+        "recon",
+        "security"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Google Hacking Database (GHDB)",
+      "notes": null
+    },
+    {
+      "id": "search-engines-google-hacking-google-dorks",
+      "description": "Runs preformatted Google dork queries against a target domain to surface exposed files and pages",
+      "targets": [
+        "domain"
+      ],
+      "access": "freemium",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "google-dorks",
+        "recon",
+        "security"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Google Dorking Tool - Pentest-Tools",
+      "notes": null
+    },
+    {
+      "id": "search-engines-bing",
+      "description": "General-purpose web search engine from Microsoft",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "search",
+      "regions": [],
+      "tags": [
+        "general-search",
+        "web-search"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "search-engines-yandex",
+      "description": "Russian general-purpose web search engine",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "search",
+      "regions": [
+        "RU"
+      ],
+      "tags": [
+        "general-search",
+        "russian-web"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "search-engines-baidu",
+      "description": "Chinese general-purpose web search engine",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "search",
+      "regions": [
+        "CN"
+      ],
+      "tags": [
+        "general-search",
+        "chinese-web"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "search-engines-startpage",
+      "description": "Privacy-focused search engine that returns Google results without tracking users",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "search",
+      "regions": [],
+      "tags": [
+        "privacy",
+        "general-search"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Crawl was blocked by an anti-bot page; description based on the site's well-known function."
+    },
+    {
+      "id": "search-engines-duckduckgo",
+      "description": "Privacy-focused search engine that does not track or profile searches",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "search",
+      "regions": [],
+      "tags": [
+        "privacy",
+        "general-search"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "search-engines-google-scholar",
+      "description": "Search engine for scholarly literature, theses, books, conference papers and patents",
+      "targets": [
+        "keyword",
+        "document"
+      ],
+      "access": "free",
+      "kind": "search",
+      "regions": [],
+      "tags": [
+        "academic-search",
+        "citations",
+        "literature"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "search-engines-litmaps-search-literature",
+      "description": "Visualizes citation networks between academic papers to support literature review and mapping",
+      "targets": [
+        "document",
+        "keyword"
+      ],
+      "access": "freemium",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "citation-mapping",
+        "academic-search",
+        "literature-review"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Litmaps",
+      "notes": null
+    },
+    {
+      "id": "search-engines-media-search-tool",
+      "description": "Browser-based tool that runs curated keyword lists across search engines for adverse media and background checks",
+      "targets": [
+        "person",
+        "company",
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "adverse-media",
+        "due-diligence",
+        "keyword-search"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Adverse Media Search Tool",
+      "notes": null
+    },
+    {
+      "id": "search-engines-google-advanced-search",
+      "description": "Google's advanced search form for exact phrases, exclusions, site restriction and numeric ranges",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "search-operators",
+        "google"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "search-engines-yandex-advanced-search-operators",
+      "description": "Yandex help page explaining search settings for personalization, safe search and result ranking",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "reading",
+      "regions": [
+        "RU"
+      ],
+      "tags": [
+        "search-operators",
+        "yandex"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Yandex Search Settings Help",
+      "notes": null
+    },
+    {
+      "id": "search-engines-bing-advanced-search-operators",
+      "description": "Microsoft support page listing Bing search keywords such as site: for narrowing results to a domain",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "reading",
+      "regions": [],
+      "tags": [
+        "search-operators",
+        "bing"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "search-engines-duckduckgo-advance-search-operators",
+      "description": "DuckDuckGo help page documenting advanced search syntax such as filetype:, site:, intitle: and inurl:",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "reading",
+      "regions": [],
+      "tags": [
+        "search-operators",
+        "duckduckgo"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "DuckDuckGo Advanced Search Operators",
+      "notes": null
+    },
+    {
+      "id": "search-engines-baidu-advanced-search",
+      "description": "Baidu's advanced search form with filters for result count, time range, language, format and site",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [
+        "CN"
+      ],
+      "tags": [
+        "search-operators",
+        "baidu"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "search-engines-google-advanced-search-operators",
+      "description": "Google Search Help page listing operators like site:, before:, after: and filetype: for refining queries",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "reading",
+      "regions": [],
+      "tags": [
+        "search-operators",
+        "google"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "search-engines-boolean-strings-advanced-google-searching",
+      "description": "Blog on Boolean search strings and sourcing techniques for recruiters and researchers",
+      "targets": [
+        "keyword",
+        "person"
+      ],
+      "access": "free",
+      "kind": "reading",
+      "regions": [],
+      "tags": [
+        "boolean-search",
+        "sourcing",
+        "blog"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Boolean Strings",
+      "notes": null
+    },
+    {
+      "id": "search-engines-marginalia-search-engine",
+      "description": "Independent search engine favoring text-heavy, non-commercial pages over SEO-optimized sites",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "search",
+      "regions": [],
+      "tags": [
+        "independent-search",
+        "general-search"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "verification-and-fact-checking-factcheck-org-a-project-of-the-annenberg-public-policy-cent",
+      "description": "US fact-checking site from the Annenberg Public Policy Center covering political and health claims",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "reading",
+      "regions": [
+        "US"
+      ],
+      "tags": [
+        "fact-checking",
+        "politics",
+        "united-states"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "FactCheck.org",
+      "notes": null
+    },
+    {
+      "id": "verification-and-fact-checking-fact-check-abc-news",
+      "description": "Australian fact-checking site (formerly RMIT ABC Fact Check) verifying claims by politicians and public figures",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "reading",
+      "regions": [
+        "AU"
+      ],
+      "tags": [
+        "fact-checking",
+        "politics",
+        "australia"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "ABC News Fact Check",
+      "notes": null
+    },
+    {
+      "id": "verification-and-fact-checking-google-fact-check",
+      "description": "Google's Fact Check Explorer for searching fact-checked claims published across many outlets",
+      "targets": [
+        "keyword",
+        "dataset"
+      ],
+      "access": "free",
+      "kind": "search",
+      "regions": [],
+      "tags": [
+        "fact-checking",
+        "claim-search"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Google Fact Check Explorer",
+      "notes": null
+    },
+    {
+      "id": "verification-and-fact-checking-snopes-com",
+      "description": "US fact-checking site investigating urban legends, viral claims and misinformation",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "reading",
+      "regions": [
+        "US"
+      ],
+      "tags": [
+        "fact-checking",
+        "misinformation",
+        "united-states"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Snopes.com",
+      "notes": null
+    },
+    {
+      "id": "verification-and-fact-checking-politifact",
+      "description": "US fact-checking site rating the accuracy of statements by politicians and public figures",
+      "targets": [
+        "keyword",
+        "person"
+      ],
+      "access": "free",
+      "kind": "reading",
+      "regions": [
+        "US"
+      ],
+      "tags": [
+        "fact-checking",
+        "politics",
+        "united-states"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "PolitiFact",
+      "notes": null
+    },
+    {
+      "id": "verification-and-fact-checking-africa-check-sorting-fact-from-fiction",
+      "description": "South Africa-based fact-checking site verifying claims and statistics across African countries",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "reading",
+      "regions": [
+        "ZA"
+      ],
+      "tags": [
+        "fact-checking",
+        "africa"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Africa Check",
+      "notes": null
+    },
+    {
+      "id": "verification-and-fact-checking-fake-news-patterns-detector",
+      "description": "MIT deep-learning tool that detects linguistic patterns distinguishing fake news from real news",
+      "targets": [
+        "document",
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "fake-news-detection",
+        "machine-learning",
+        "misinformation"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "verification-and-fact-checking-eu-vs-disinfo-database",
+      "description": "Database of pro-Kremlin disinformation cases with sourcing and rebuttals, updated weekly",
+      "targets": [
+        "keyword",
+        "dataset"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [
+        "EU"
+      ],
+      "tags": [
+        "disinformation",
+        "russia",
+        "database"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "EUvsDisinfo Database",
+      "notes": null
+    },
+    {
+      "id": "verification-and-fact-checking-ground-news-multi-source-media",
+      "description": "News aggregator that tags each story's coverage by outlet political bias and factuality",
+      "targets": [
+        "keyword"
+      ],
+      "access": "freemium",
+      "kind": "feed",
+      "regions": [],
+      "tags": [
+        "media-bias",
+        "news-aggregator"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Ground News",
+      "notes": null
+    },
+    {
+      "id": "verification-and-fact-checking-zerogpt-chat-gpt-open-ai-and-ai-text-detector-free-tool",
+      "description": "Detects whether text was generated by GPT-4, ChatGPT or other AI models, with a percentage score",
+      "targets": [
+        "document"
+      ],
+      "access": "freemium",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "ai-detection",
+        "text-analysis"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "ZeroGPT",
+      "notes": null
+    },
+    {
+      "id": "verification-and-fact-checking-openai-api",
+      "description": "OpenAI's AI Text Classifier for detecting AI-generated text",
+      "targets": [
+        "document"
+      ],
+      "access": "unknown",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "ai-detection",
+        "text-analysis"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": "OpenAI AI Text Classifier (discontinued)",
+      "notes": "OpenAI retired its AI Text Classifier in mid-2023; the URL now redirects to the general OpenAI Platform login page."
+    },
+    {
+      "id": "verification-and-fact-checking-media-bias-source-allsides",
+      "description": "Rates hundreds of news outlets on a left-to-right political bias scale using multi-method analysis",
+      "targets": [
+        "company",
+        "domain"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "media-bias",
+        "news-outlets"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "AllSides Media Bias Ratings",
+      "notes": null
+    },
+    {
+      "id": "verification-and-fact-checking-interactive-media-bias-chart-source-ad-fontes-media",
+      "description": "Interactive chart plotting news outlets by political bias and reporting reliability/quality",
+      "targets": [
+        "company",
+        "domain"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "media-bias",
+        "news-outlets"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Ad Fontes Media Bias Chart",
+      "notes": null
+    },
+    {
+      "id": "verification-and-fact-checking-media-bias-fact-check",
+      "description": "Database rating news outlets by political bias and factual accuracy, with curated daily fact-checks",
+      "targets": [
+        "company",
+        "domain"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "media-bias",
+        "news-outlets",
+        "fact-checking"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Media Bias/Fact Check",
+      "notes": null
+    },
+    {
+      "id": "verification-and-fact-checking-hosting-checker-find-out-who-is-hosting-any-website",
+      "description": "Aggregates today's front-page images from major US newspapers",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "feed",
+      "regions": [
+        "US"
+      ],
+      "tags": [
+        "newspapers",
+        "front-pages",
+        "news-aggregator"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Front Pages - Newspaper Headlines",
+      "notes": "Bookmark title 'Hosting Checker' does not match this URL; frontpages.com aggregates newspaper front pages, not website hosting lookups."
+    },
+    {
+      "id": "reporting-tools-flowchart-maker-and-online-diagram-software",
+      "description": "Free online diagram editor (draw.io) for flowcharts, network diagrams, UML, ER diagrams and BPMN",
+      "targets": [
+        "document"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "diagramming",
+        "flowcharts"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "draw.io / diagrams.net",
+      "notes": null
+    },
+    {
+      "id": "reporting-tools-yed-live-online-diagram-tool",
+      "description": "Browser-based graph and diagram editor with drag-and-drop nodes and AI-assisted editing",
+      "targets": [
+        "document"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "diagramming",
+        "graph-editor"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "yEd Live",
+      "notes": null
+    },
+    {
+      "id": "reporting-tools-auto-graph-datasets",
+      "description": "Open-source tool (RAWGraphs) for turning spreadsheet or CSV data into custom charts and visualizations",
+      "targets": [
+        "dataset"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "data-visualization",
+        "charts"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": "RAWGraphs",
+      "notes": "Page failed to load during crawl (empty content); description based on the tool's well-known function."
+    },
+    {
+      "id": "reporting-tools-data-visualisation-tool",
+      "description": "Suite of simple tools (WordCounter, WTFcsv, SameDiff, ConnectTheDots) for analyzing text and CSV data",
+      "targets": [
+        "dataset",
+        "document"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "data-visualization",
+        "text-analysis"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "DataBasic.io",
+      "notes": null
+    },
+    {
+      "id": "reporting-tools-create-timeline-visualisations",
+      "description": "Builds interactive timelines from a Google Sheet, pulling in media from Twitter, YouTube, Wikipedia and more",
+      "targets": [
+        "dataset"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "timeline",
+        "data-visualization"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "TimelineJS",
+      "notes": null
+    },
+    {
+      "id": "reporting-tools-create-storymaps",
+      "description": "Builds location-based story maps, pairing narrative slides with places on a map",
+      "targets": [
+        "geo"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "storymap",
+        "geolocation",
+        "data-visualization"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "StoryMapJS",
+      "notes": null
+    },
+    {
+      "id": "reporting-tools-timeline-maker",
+      "description": "Online timeline builder with Google Calendar/Sheets integration and collaboration features",
+      "targets": [
+        "dataset"
+      ],
+      "access": "freemium",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "timeline",
+        "data-visualization"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Time.Graphics",
+      "notes": null
+    },
+    {
+      "id": "reporting-tools-mind-maps-and-flow-charts-coggle",
+      "description": "Collaborative mind-mapping and flowchart tool with real-time sharing and version history",
+      "targets": [
+        "document"
+      ],
+      "access": "freemium",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "mind-mapping",
+        "diagramming",
+        "collaboration"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Coggle",
+      "notes": null
+    },
+    {
+      "id": "reporting-tools-canva",
+      "description": "Canva's report design templates for building visual reports and documents",
+      "targets": [
+        "document"
+      ],
+      "access": "freemium",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "report-design",
+        "templates"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Page returned a server error during crawl; description based on Canva's well-known report-template feature."
+    },
+    {
+      "id": "translation-tools-deepl-translate",
+      "description": "Neural machine translation service for text and documents across dozens of languages",
+      "targets": [
+        "document"
+      ],
+      "access": "freemium",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "translation",
+        "language"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "DeepL Translate",
+      "notes": null
+    },
+    {
+      "id": "translation-tools-cambridge-dictionary-translate",
+      "description": "Free text translation between English and multiple languages, linked to Cambridge dictionary entries",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "translation",
+        "dictionary",
+        "language"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "translation-tools-google-translate-chrome-web-store",
+      "description": "Chrome browser extension for translating selected text or full pages using Google Translate",
+      "targets": [
+        "document"
+      ],
+      "access": "free",
+      "kind": "software",
+      "regions": [],
+      "tags": [
+        "translation",
+        "browser-extension"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Google Translate (Chrome extension)",
+      "notes": null
+    },
+    {
+      "id": "translation-tools-deepl-translate-chrome-web-store",
+      "description": "Chrome browser extension for translating text and pages and getting AI writing assistance via DeepL",
+      "targets": [
+        "document"
+      ],
+      "access": "freemium",
+      "kind": "software",
+      "regions": [],
+      "tags": [
+        "translation",
+        "browser-extension"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "DeepL Translate (Chrome extension)",
+      "notes": null
+    },
+    {
+      "id": "translation-tools-multi-language-keyboard",
+      "description": "Directory of virtual keyboards and dictionary links for typing and translating dozens of world languages",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "directory",
+      "regions": [],
+      "tags": [
+        "language",
+        "dictionary",
+        "virtual-keyboard"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Lexilogos - Online Dictionaries",
+      "notes": null
+    }
+  ]
+}

@@ -1,0 +1,1311 @@
+{
+  "batch": 3,
+  "enrichedAt": "2026-09-13T02:54:32Z",
+  "entries": [
+    {
+      "id": "area-and-event-monitoring-trends-map-twitter",
+      "description": "Sells archived historical Twitter/X trend and hashtag data by location and date; no longer a live trends map",
+      "targets": [
+        "keyword",
+        "geo"
+      ],
+      "access": "paid",
+      "kind": "dataset",
+      "regions": [],
+      "tags": [
+        "twitter",
+        "trends",
+        "historical-data",
+        "geolocation"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": "Identity change: Trendsmap pivoted from a live geo trends map to selling historical Twitter archives (2006-2023) after 'the demise of Twitter' per its own site copy"
+    },
+    {
+      "id": "area-and-event-monitoring-onemilliontweetmap-twitter",
+      "description": "Live world map plotting geotagged tweets in real time, filterable by hashtag and time range",
+      "targets": [
+        "keyword",
+        "geo"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "twitter",
+        "live-map",
+        "geolocation",
+        "social-media"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Not loaded this pass; long-standing tool. Twitter/X API restrictions since 2023 may limit live coverage"
+    },
+    {
+      "id": "area-and-event-monitoring-omnisci-tweetmap-twitter",
+      "description": null,
+      "targets": [],
+      "access": "unknown",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "twitter",
+        "live-map"
+      ],
+      "confidence": "unverified",
+      "nameSuggestion": null,
+      "notes": "Fetch failed with a 500 server error; OmniSci/HEAVY.AI's public tweet map demo may be discontinued"
+    },
+    {
+      "id": "area-and-event-monitoring-instagram-use-search-auto-refresh",
+      "description": "Instagram's login/search screen, used manually with location or hashtag search and page refresh to watch new posts",
+      "targets": [
+        "keyword",
+        "geo",
+        "social"
+      ],
+      "access": "free-registration",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "instagram",
+        "manual-search",
+        "social-media"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": "Instagram Manual Search & Refresh",
+      "notes": "URL is just Instagram's login page; the monitoring technique is manual repeated search, not a distinct tool"
+    },
+    {
+      "id": "area-and-event-monitoring-facebook-live-video-search-modify-search-location",
+      "description": null,
+      "targets": [],
+      "access": "unknown",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "facebook",
+        "live-video",
+        "social-media"
+      ],
+      "confidence": "unverified",
+      "nameSuggestion": "Facebook Live Video Search",
+      "notes": "Fetch timed out (504); Facebook's video search filters change frequently and this deep link may no longer resolve"
+    },
+    {
+      "id": "area-and-event-monitoring-facebook-event-will-require-an-event-id-modify-eventid-in-url",
+      "description": "URL template for viewing a Facebook event's discussion tab once its numeric event ID is substituted in",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free-registration",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "facebook",
+        "events",
+        "social-media"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": "Facebook Event Discussion (requires event ID)",
+      "notes": "Requires manually finding and substituting a real event ID; not a standalone tool"
+    },
+    {
+      "id": "area-and-event-monitoring-fdown-facebook-video-downloader",
+      "description": "Downloads public Facebook videos to MP4 by pasting in the video's URL",
+      "targets": [
+        "video"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "facebook",
+        "video-download",
+        "social-media"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-flickr-activity-map-flickr",
+      "description": "Interactive map of geotagged Flickr photos, browsable by location and zoom level",
+      "targets": [
+        "geo",
+        "image"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "flickr",
+        "photos",
+        "geolocation"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-flikr-current-location",
+      "description": null,
+      "targets": [],
+      "access": "unknown",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "geolocation"
+      ],
+      "confidence": "unverified",
+      "nameSuggestion": null,
+      "notes": "Not fetched; domain name and content do not clearly match a Flickr-specific tool despite its category placement"
+    },
+    {
+      "id": "area-and-event-monitoring-youtube-geo-search-tool",
+      "description": "Searches YouTube videos uploaded from within a chosen map area and time window",
+      "targets": [
+        "geo",
+        "video",
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "youtube",
+        "geolocation",
+        "video-search"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-youtube-geofind",
+      "description": "Maps the upload location of a YouTube video from its metadata, when available",
+      "targets": [
+        "video",
+        "geo"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "youtube",
+        "geolocation",
+        "video-metadata"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": "Its CSV export feature was removed following a 2023 YouTube API audit"
+    },
+    {
+      "id": "area-and-event-monitoring-hadzy-youtube-comments-search",
+      "description": "Searches the text of YouTube video comments by keyword",
+      "targets": [
+        "keyword",
+        "video"
+      ],
+      "access": "free",
+      "kind": "search",
+      "regions": [],
+      "tags": [
+        "youtube",
+        "comments",
+        "search"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-mw-metatdata-grabs-singular-details-about-a-youtube-video-and-it",
+      "description": "Pulls metadata for a single YouTube video, channel, playlist or uploader from its ID or URL",
+      "targets": [
+        "video",
+        "username"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "youtube",
+        "metadata",
+        "video-analysis"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "YouTube Metadata (mattw.io)",
+      "notes": "Subject to YouTube's daily API quota limits, which can temporarily block lookups"
+    },
+    {
+      "id": "area-and-event-monitoring-vessel-ownership-and-id-records",
+      "description": "Ship registry lookup showing a vessel's ownership, class, flag and identification history",
+      "targets": [
+        "vehicle",
+        "company"
+      ],
+      "access": "free-registration",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "maritime",
+        "vessel-registry",
+        "shipping"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Full detailed reports require a paid subscription"
+    },
+    {
+      "id": "area-and-event-monitoring-global-fishing-watch",
+      "description": "Interactive map tracking commercial fishing vessel activity worldwide from AIS and satellite data",
+      "targets": [
+        "vehicle",
+        "geo"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "maritime",
+        "fishing",
+        "vessel-tracking",
+        "ais"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-marinetraffic-global-ship-tracking-intelligence-ais-marine-traff",
+      "description": "Live map of ship positions worldwide from AIS transponder data, with vessel details on click",
+      "targets": [
+        "vehicle",
+        "geo"
+      ],
+      "access": "freemium",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "maritime",
+        "ais",
+        "vessel-tracking"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Detailed vessel history and port-call data sit behind a paid tier"
+    },
+    {
+      "id": "area-and-event-monitoring-maritime-database",
+      "description": "Directory of ports, shipping companies and maritime contacts searchable by country",
+      "targets": [
+        "company",
+        "geo"
+      ],
+      "access": "free",
+      "kind": "directory",
+      "regions": [],
+      "tags": [
+        "maritime",
+        "ports",
+        "shipping-directory"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-airnav-radarbox-live-flight-tracker-and-airport-status",
+      "description": "Live map of aircraft positions and airport status pulled from ADS-B receiver data",
+      "targets": [
+        "vehicle",
+        "geo"
+      ],
+      "access": "freemium",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "aviation",
+        "ads-b",
+        "flight-tracking"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": "AirNav Radar",
+      "notes": "Rebranded from AirNav RadarBox to AirNav Radar; old radarbox24.com links may redirect"
+    },
+    {
+      "id": "area-and-event-monitoring-ads-b-historical-records",
+      "description": "Netherlands-based archive of ADS-B flight tracking records and receiver coverage",
+      "targets": [
+        "vehicle",
+        "geo"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [
+        "NL"
+      ],
+      "tags": [
+        "aviation",
+        "ads-b",
+        "flight-history"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": "Site currently displays a banner warning of ongoing website data delivery problems"
+    },
+    {
+      "id": "area-and-event-monitoring-flightaware-flight-tracker-flight-status",
+      "description": "Tracks live and historical commercial flight positions and status by flight number, tail number or airport",
+      "targets": [
+        "vehicle",
+        "geo"
+      ],
+      "access": "freemium",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "aviation",
+        "flight-tracking",
+        "flight-status"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Extended flight history and alerts require a paid plan"
+    },
+    {
+      "id": "area-and-event-monitoring-world-aircrafts-database-planemapper",
+      "description": "Database of individual aircraft by registration number, with owner, type and history where known",
+      "targets": [
+        "vehicle"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "aviation",
+        "aircraft-registry"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-flight-tracker-live-flight-tracking-plane-finder",
+      "description": "Live map of aircraft in flight worldwide from ADS-B and MLAT data",
+      "targets": [
+        "vehicle",
+        "geo"
+      ],
+      "access": "freemium",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "aviation",
+        "ads-b",
+        "flight-tracking"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Playback history and premium data layers require a paid subscription"
+    },
+    {
+      "id": "area-and-event-monitoring-global-railway-map-reference",
+      "description": "Crowdsourced OpenStreetMap-based map of rail lines, stations and signalling worldwide",
+      "targets": [
+        "geo"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "rail",
+        "openstreetmap",
+        "transport-map"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-mini-tokyo-3d",
+      "description": "3D real-time map of Tokyo-area train and bus positions running on their scheduled routes",
+      "targets": [
+        "vehicle",
+        "geo"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [
+        "JP"
+      ],
+      "tags": [
+        "rail",
+        "tokyo",
+        "transit-tracking"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-railroad-maps",
+      "description": "Personal archive of scanned historical railroad maps organized by region",
+      "targets": [
+        "document",
+        "geo"
+      ],
+      "access": "free",
+      "kind": "reading",
+      "regions": [],
+      "tags": [
+        "rail",
+        "historical-maps",
+        "archive"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Hosted on a personal university homepage; scope and update status unclear"
+    },
+    {
+      "id": "area-and-event-monitoring-gpsjam-gps-gnss-interference-map",
+      "description": "Daily map of GPS/GNSS signal jamming and interference derived from aircraft ADS-B position anomalies",
+      "targets": [
+        "geo"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "gps",
+        "gnss-jamming",
+        "aviation"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-google-near-keyword-sample-google",
+      "description": "Saved example of Google's old NEAR search operator combining a keyword with a place name",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "search",
+      "regions": [
+        "AU"
+      ],
+      "tags": [
+        "google-search",
+        "search-operator"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": "Google NEAR Search Operator (example)",
+      "notes": "The NEAR operator is deprecated and no longer functions as a distinct proximity operator in current Google search"
+    },
+    {
+      "id": "area-and-event-monitoring-broadcastify-listen-live-to-police-fire-ems-aviation-and-rail-au",
+      "description": "Streams live police, fire, EMS, aviation and rail scanner radio feeds searchable by location",
+      "targets": [
+        "audio",
+        "geo"
+      ],
+      "access": "freemium",
+      "kind": "feed",
+      "regions": [],
+      "tags": [
+        "scanner-radio",
+        "emergency-services",
+        "live-audio"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Premium feeds and archived audio require a paid subscription"
+    },
+    {
+      "id": "area-and-event-monitoring-country-daily-trending-search-topics",
+      "description": "Argentina's daily top Google Search trending topics",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "feed",
+      "regions": [
+        "AR"
+      ],
+      "tags": [
+        "google-trends",
+        "search-trends"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "URL is hardcoded to geo=AR; change the geo parameter for other countries"
+    },
+    {
+      "id": "area-and-event-monitoring-strava-segments",
+      "description": "Looks up Strava exercise segments and heatmap activity for a chosen location",
+      "targets": [
+        "geo"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "strava",
+        "fitness-tracking",
+        "geolocation"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-social-geo-lens-osint-combine",
+      "description": "Generates ready-made geolocated social media search links (Twitter, Instagram, Flickr) for a chosen point on a map",
+      "targets": [
+        "geo",
+        "social"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "geolocation",
+        "social-media",
+        "search-links"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-live-feeds-status",
+      "description": "Status dashboard showing whether Esri Living Atlas's live data feeds (weather, traffic, disasters) are currently updating",
+      "targets": [
+        "dataset"
+      ],
+      "access": "free",
+      "kind": "directory",
+      "regions": [],
+      "tags": [
+        "arcgis",
+        "data-feeds",
+        "status-monitoring"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": "Monitors the health of the underlying live feeds; it is not itself a live feed or map of events"
+    },
+    {
+      "id": "area-and-event-monitoring-active-fire-data-earthdata",
+      "description": "Near-real-time satellite map of active wildfire detections from NASA's FIRMS/MODIS and VIIRS sensors",
+      "targets": [
+        "geo",
+        "dataset"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "wildfire",
+        "satellite-imagery",
+        "nasa"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-kartaview-openstreetcam-webcam-database",
+      "description": null,
+      "targets": [],
+      "access": "unknown",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "street-imagery",
+        "crowdsourced"
+      ],
+      "confidence": "unverified",
+      "nameSuggestion": "KartaView (formerly OpenStreetCam)",
+      "notes": "Page failed to load (empty content); OpenStreetCam was rebranded to KartaView and this old domain/URL may be defunct"
+    },
+    {
+      "id": "area-and-event-monitoring-earthcam-live-network-of-webcams-and-streaming-video-cameras",
+      "description": "Directory map of live public webcams worldwide, from tourist landmarks to city streets",
+      "targets": [
+        "geo",
+        "video"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "webcams",
+        "live-video",
+        "tourism"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-webcam-map",
+      "description": "Map of live public webcam streams browsable by country and region",
+      "targets": [
+        "geo",
+        "video"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "webcams",
+        "live-video"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-windy-webcams",
+      "description": "Map of live public weather and landscape webcams layered on Windy's weather map",
+      "targets": [
+        "geo",
+        "video"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "webcams",
+        "weather",
+        "live-video"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-citywalki-pedestrian-and-vehicle-footage-of-a-city",
+      "description": "Street-level video footage of pedestrian and vehicle activity for selected cities",
+      "targets": [
+        "geo",
+        "video"
+      ],
+      "access": "unknown",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "street-video",
+        "urban-footage"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Limited independent information available on coverage or update frequency"
+    },
+    {
+      "id": "area-and-event-monitoring-global-airport-webcams",
+      "description": "Directory of live airport webcams organized by country",
+      "targets": [
+        "geo",
+        "video"
+      ],
+      "access": "free",
+      "kind": "directory",
+      "regions": [
+        "AU"
+      ],
+      "tags": [
+        "webcams",
+        "aviation",
+        "airports"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Linked URL is filtered to the Australia category"
+    },
+    {
+      "id": "area-and-event-monitoring-site-insecam-org-location-google-search",
+      "description": "Saved Google search restricting results to insecam.org pages mentioning a camera's location",
+      "targets": [
+        "keyword",
+        "geo"
+      ],
+      "access": "free",
+      "kind": "search",
+      "regions": [],
+      "tags": [
+        "cctv",
+        "google-dorking",
+        "exposed-cameras"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": "Google Dork: insecam.org Location Search",
+      "notes": "insecam.org aggregates unsecured/default-password public IP cameras; raises legal and ethical viewing concerns"
+    },
+    {
+      "id": "area-and-event-monitoring-surveillance-under-surveillance-cctv-camera-database",
+      "description": "Database and art project cataloguing CCTV cameras spotted around cities, with notes on what each observes",
+      "targets": [
+        "geo",
+        "image"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "cctv",
+        "surveillance",
+        "urban-mapping"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-google-alerts",
+      "description": "Emails a notification whenever new web content matching a saved keyword search appears",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free-registration",
+      "kind": "feed",
+      "regions": [],
+      "tags": [
+        "email-alerts",
+        "keyword-monitoring"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-alert-service-surface-web-and-twitter",
+      "description": "Sends alerts when new web and Twitter/X content matches a saved keyword query",
+      "targets": [
+        "keyword"
+      ],
+      "access": "freemium",
+      "kind": "feed",
+      "regions": [],
+      "tags": [
+        "email-alerts",
+        "social-media",
+        "keyword-monitoring"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Free tier is limited; broader monitoring and historical search require a paid plan"
+    },
+    {
+      "id": "area-and-event-monitoring-free-rss-reader",
+      "description": "Web-based RSS feed reader for subscribing to and reading site updates in one place",
+      "targets": [
+        "keyword",
+        "dataset"
+      ],
+      "access": "free",
+      "kind": "feed",
+      "regions": [],
+      "tags": [
+        "rss",
+        "feed-reader"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": "Homepage shows only stale blog content dated 2017, suggesting the site may be unmaintained"
+    },
+    {
+      "id": "area-and-event-monitoring-disaster-alert",
+      "description": "Interactive world map of active natural hazards (storms, quakes, floods, fires) with severity ratings and alerts",
+      "targets": [
+        "geo"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "disaster-alerts",
+        "hazard-map",
+        "emergency"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-gdacs-global-disaster-alerting-coordination-system",
+      "description": "Aggregates real-time earthquake, cyclone, flood and volcano alerts onto a global map with automated impact estimates",
+      "targets": [
+        "geo"
+      ],
+      "access": "free",
+      "kind": "feed",
+      "regions": [],
+      "tags": [
+        "disaster-alerts",
+        "emergency",
+        "un-agency"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Also offers an interactive map view alongside its RSS/email alert feeds"
+    },
+    {
+      "id": "area-and-event-monitoring-crisis-dashboard-macro-events",
+      "description": null,
+      "targets": [],
+      "access": "unknown",
+      "kind": "dataset",
+      "regions": [],
+      "tags": [
+        "conflict-data",
+        "political-violence"
+      ],
+      "confidence": "unverified",
+      "nameSuggestion": "ACLED Crisis Dashboard",
+      "notes": "Fetch failed with no further error detail; ACLED's dashboard summarizes armed conflict and protest event data, some of which requires registration"
+    },
+    {
+      "id": "area-and-event-monitoring-live-ua-map-significant-events",
+      "description": "Live map plotting reported military and significant events specifically in the Russia-Ukraine war",
+      "targets": [
+        "geo",
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [
+        "UA"
+      ],
+      "tags": [
+        "ukraine",
+        "conflict-map",
+        "live-events"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Live UA Map (Russia-Ukraine War)",
+      "notes": "Despite the generic 'Significant Events' bookmark title, coverage is exclusively the Russia-Ukraine war, not global events"
+    },
+    {
+      "id": "area-and-event-monitoring-mapchecking-crowd-size-estimator",
+      "description": "Estimates crowd size for an area you draw on a map, based on density assumptions",
+      "targets": [
+        "geo"
+      ],
+      "access": "free",
+      "kind": "web-tool",
+      "regions": [],
+      "tags": [
+        "crowd-estimation",
+        "geolocation"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-openhistoricalmap",
+      "description": "Wiki-style map of historical boundaries, places and infrastructure browsable by date, built on OpenStreetMap data",
+      "targets": [
+        "geo",
+        "dataset"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "historical-map",
+        "openstreetmap",
+        "boundaries"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-homepage-media-landscapes",
+      "description": "Country-by-country media ownership and regulation profiles for European countries and their neighbouring states",
+      "targets": [
+        "company",
+        "document"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [
+        "EU"
+      ],
+      "tags": [
+        "media-ownership",
+        "media-regulation",
+        "country-profiles"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": "Covers 54 profiles focused on Europe and neighbouring states, not a global resource despite generic branding"
+    },
+    {
+      "id": "area-and-event-monitoring-country-profiles-media-bias-fact-check",
+      "description": "Country-level profiles rating the media landscape and outlet bias/reliability for each nation",
+      "targets": [
+        "company",
+        "document"
+      ],
+      "access": "freemium",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "media-bias",
+        "fact-checking",
+        "country-profiles"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": "Full country profile content is gated behind a 'Members only' paywall"
+    },
+    {
+      "id": "area-and-event-monitoring-global-newspaper-map",
+      "description": "World map of newspapers and news sites plotted by location, with direct links to each outlet",
+      "targets": [
+        "company",
+        "geo"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "newspapers",
+        "media-directory",
+        "geolocation"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-world-news-headlines-by-country",
+      "description": null,
+      "targets": [],
+      "access": "unknown",
+      "kind": "feed",
+      "regions": [],
+      "tags": [
+        "news-aggregator",
+        "headlines"
+      ],
+      "confidence": "unverified",
+      "nameSuggestion": null,
+      "notes": "EIN News's country headline pages were blocked by a bot-verification/CAPTCHA challenge page rather than returning content"
+    },
+    {
+      "id": "area-and-event-monitoring-daily-trending-search-topics",
+      "description": "Australia's daily top Google Search trending topics",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "feed",
+      "regions": [
+        "AU"
+      ],
+      "tags": [
+        "google-trends",
+        "search-trends"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "URL is hardcoded to geo=AU; change the geo parameter for other countries"
+    },
+    {
+      "id": "area-and-event-monitoring-yearly-trending-search-topics",
+      "description": "Australia's top Google Search trending topics for the year 2017",
+      "targets": [
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "dataset",
+      "regions": [
+        "AU"
+      ],
+      "tags": [
+        "google-trends",
+        "search-trends",
+        "year-in-review"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "URL is hardcoded to the 2017 year-in-search report for Australia; not a live feed"
+    },
+    {
+      "id": "area-and-event-monitoring-social-media-usage-statistics",
+      "description": "Market research portal with statistics and reports on social media usage and other industries by country",
+      "targets": [
+        "dataset",
+        "company"
+      ],
+      "access": "freemium",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "market-research",
+        "statistics",
+        "social-media-usage"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": "Most detailed statistics and reports require a paid account; some individual charts are free"
+    },
+    {
+      "id": "area-and-event-monitoring-17-twitter-modify-search-field-for-criteria-and-range",
+      "description": "Twitter/X advanced search query template filtering images posted near a location within a set radius",
+      "targets": [
+        "keyword",
+        "image",
+        "geo"
+      ],
+      "access": "free-registration",
+      "kind": "search",
+      "regions": [],
+      "tags": [
+        "twitter",
+        "advanced-search",
+        "geolocation"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": "Twitter/X Geo Image Search (near: operator)",
+      "notes": "Requires manually editing the near:/within: search operators and location in the URL"
+    },
+    {
+      "id": "area-and-event-monitoring-18-instagram-locate-and-modify-location-id-in-url",
+      "description": "Instagram location page showing recent photos and videos tagged at a specific place, by numeric location ID",
+      "targets": [
+        "geo",
+        "image",
+        "video"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "instagram",
+        "geolocation",
+        "location-tagging"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Instagram Location Search (by location ID)",
+      "notes": "Requires finding the target location's numeric ID and substituting it into the URL"
+    },
+    {
+      "id": "area-and-event-monitoring-19-crime-index-by-country",
+      "description": "Ranks countries by a crowdsourced perceived crime index and corresponding safety index",
+      "targets": [
+        "geo",
+        "dataset"
+      ],
+      "access": "free",
+      "kind": "dataset",
+      "regions": [],
+      "tags": [
+        "crime-statistics",
+        "country-ranking",
+        "numbeo"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Crime Index by Country (Numbeo)",
+      "notes": "Based on user-submitted perception surveys rather than official crime statistics; premium data download available"
+    },
+    {
+      "id": "area-and-event-monitoring-21-violent-crime-acvitiy-by-country",
+      "description": "Compares countries by intentional homicide counts and murder rate",
+      "targets": [
+        "geo",
+        "dataset"
+      ],
+      "access": "free",
+      "kind": "dataset",
+      "regions": [],
+      "tags": [
+        "crime-statistics",
+        "homicide",
+        "country-ranking"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Murder Rate by Country (NationMaster)",
+      "notes": "Underlying data is dated, mostly from 2008-2011"
+    },
+    {
+      "id": "area-and-event-monitoring-22-crime-statistics-world-and-regional-statistics-national-data-",
+      "description": "World Data Atlas section aggregating homicide, burglary, assault and other crime indicators by country from 200+ public sources",
+      "targets": [
+        "geo",
+        "dataset"
+      ],
+      "access": "freemium",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "crime-statistics",
+        "country-profiles",
+        "world-data"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Crime Statistics World Data Atlas (Knoema)",
+      "notes": "Some datasets and downloads require a paid Knoema account"
+    },
+    {
+      "id": "area-and-event-monitoring-23-militant-group-historical-activities",
+      "description": "University of Maryland research center site hosting the Global Terrorism Database, covering 200,000+ incidents from 1970-2020",
+      "targets": [
+        "geo",
+        "dataset",
+        "company"
+      ],
+      "access": "free-registration",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "terrorism",
+        "gtd",
+        "conflict-data"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "START / Global Terrorism Database (University of Maryland)",
+      "notes": "Full GTD dataset access requires free registration"
+    },
+    {
+      "id": "area-and-event-monitoring-24-group-linkages-and-events",
+      "description": "Stanford project profiling militant organizations and mapping their alliances and rivalries over time, with 133 group profiles",
+      "targets": [
+        "company",
+        "geo",
+        "dataset"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "militant-groups",
+        "conflict-data",
+        "terrorism"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "Mapping Militants Project (Stanford)",
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-ucdp-uppsala-conflict-data-program",
+      "description": "Browsable dataset of organized violence events (state-based, non-state and one-sided) with location and fatality data",
+      "targets": [
+        "geo",
+        "dataset"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "conflict-data",
+        "armed-conflict",
+        "academic-dataset"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-terrorist-attacks",
+      "description": null,
+      "targets": [],
+      "access": "unknown",
+      "kind": "reading",
+      "regions": [],
+      "tags": [
+        "terrorism",
+        "storymap",
+        "discontinued"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": null,
+      "notes": "This Esri StoryMap documents that its own crowdsourced, Wikipedia-based global terrorism map (2016-2020) was shut down by the researchers because unreliable Wikipedia editing undermined data integrity; recommend retiring from the directory as a dead tool"
+    },
+    {
+      "id": "area-and-event-monitoring-flu-and-ebola-map-virus-and-contagious-disease-surveillance",
+      "description": "Live map tracking outbreaks of flu, Ebola and other infectious diseases from news, official and social media sources",
+      "targets": [
+        "geo",
+        "keyword"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "disease-surveillance",
+        "outbreak-tracking",
+        "public-health"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    },
+    {
+      "id": "area-and-event-monitoring-counter-human-trafficking-organisations-map",
+      "description": "Map of anti-human-trafficking organizations and services searchable by country",
+      "targets": [
+        "geo",
+        "company"
+      ],
+      "access": "free",
+      "kind": "map",
+      "regions": [],
+      "tags": [
+        "human-trafficking",
+        "ngo-directory",
+        "anti-slavery"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": "Not independently reloaded; project's current maintenance status is unclear"
+    },
+    {
+      "id": "area-and-event-monitoring-drug-trade-insight-south-america",
+      "description": "Country-by-country investigative profiles of organized crime and drug trafficking across Mexico, Central America, the Caribbean and South America",
+      "targets": [
+        "geo",
+        "company"
+      ],
+      "access": "free",
+      "kind": "reading",
+      "regions": [],
+      "tags": [
+        "organized-crime",
+        "drug-trafficking",
+        "latin-america"
+      ],
+      "confidence": "verified",
+      "nameSuggestion": "InsightCrime Country Profiles",
+      "notes": "Coverage spans Latin America and the Caribbean broadly, not only South America despite the bookmark title"
+    },
+    {
+      "id": "area-and-event-monitoring-drug-trade-statistics-and-usage",
+      "description": "UN Office on Drugs and Crime data portal with statistics on drug production, trafficking and usage by country",
+      "targets": [
+        "geo",
+        "dataset"
+      ],
+      "access": "free",
+      "kind": "database",
+      "regions": [],
+      "tags": [
+        "drug-trafficking",
+        "un-data",
+        "crime-statistics"
+      ],
+      "confidence": "inferred",
+      "nameSuggestion": null,
+      "notes": null
+    }
+  ]
+}
