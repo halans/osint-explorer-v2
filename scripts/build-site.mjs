@@ -384,6 +384,7 @@ export function buildSearchAssetJs(categories, { baseUrl }) {
 }
 
 const STYLE_CSS = `:root {
+  color-scheme: dark;
   --bg: #0b0f14; --panel: #111820; --panel-2: #161f29;
   --line: #223040; --line-soft: #1a2532;
   --ink: #e6edf5; --ink-dim: #94a6bb; --ink-faint: #64798f;
@@ -429,7 +430,11 @@ article.retired { opacity: .6; }
 .desc { margin: 0; font-size: 13.5px; color: var(--ink-dim); }
 .desc.missing { font-style: italic; color: var(--ink-faint); }
 .meta { display: flex; gap: 5px; flex-wrap: wrap; }
-.b { font-family: var(--mono); font-size: 10.5px; padding: 2px 7px; border-radius: 5px; border: 1px solid var(--line); color: var(--ink-faint); }
+.b { font-family: var(--mono); font-size: 10.5px; padding: 2px 7px; border-radius: 5px; border: 1px solid var(--line); color: var(--ink-dim); }
+.b.kind { color: var(--ink-dim); }
+.b.access { color: var(--ink-dim); }
+.b.tgt { color: var(--accent); border-color: var(--accent-dim); }
+.b.region { color: #ffd479; border-color: #4d3f22; }
 .b.dead { color: var(--bad); border-color: #5a2a2a; }
 .cta { color: var(--ink-dim); font-size: 13.5px; margin-top: 30px; }
 footer { max-width: 1100px; margin: 0 auto; padding: 0 24px 50px; color: var(--ink-faint); font-size: 12.5px; }
