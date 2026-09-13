@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
   BASE_URL, slugify, slugifyAll, escapeHtml, escapeJsonLd, hostOf,
-  mapKindToSchemaType,
+  mapKindToSchemaType, groupByCategory,
 } from '../scripts/build-site.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -54,4 +54,30 @@ test('mapKindToSchemaType covers every kind value present in the real dataset', 
 
 test('mapKindToSchemaType has a Thing fallback for anything unrecognized', () => {
   assert.equal(mapKindToSchemaType('made-up-kind'), 'Thing');
+});
+
+test('groupByCategory assigns one unique slug per category', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  assert.equal(categories.length, ds.categories.length);
+  const slugs = categories.map((c) => c.slug);
+  assert.equal(new Set(slugs).size, slugs.length, 'duplicate category slugs');
+});
+
+test('groupByCategory accounts for every tool that has a matching category', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const totalGrouped = categories.reduce((n, c) => n + c.tools.length, 0);
+  const categoryNames = new Set(ds.categories.map((c) => c.name));
+  const totalExpected = ds.tools.filter((t) => categoryNames.has(t.category)).length;
+  assert.equal(totalGrouped, totalExpected);
+});
+
+test('groupByCategory groups tools under their subcategory, sorted by name', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const withSubs = categories.find((c) => c.bySubcategory.length > 1);
+  assert.ok(withSubs, 'fixture dataset needs at least one category with multiple subcategories');
+  for (const sub of withSubs.bySubcategory) {
+    const names = sub.tools.map((t) => t.name.toLowerCase());
+    const sorted = [...names].sort();
+    assert.deepEqual(names, sorted, `tools in ${withSubs.slug}/${sub.name} are not sorted`);
+  }
 });

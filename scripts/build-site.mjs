@@ -62,3 +62,32 @@ export function mapKindToSchemaType(kind) {
   if (CREATIVE_KINDS.has(kind)) return 'CreativeWork';
   return 'Thing';
 }
+
+export function groupByCategory(tools, categoryDefs) {
+  const slugs = slugifyAll(categoryDefs.map((c) => c.name));
+  return categoryDefs.map((def, i) => {
+    const catTools = tools
+      .filter((t) => t.category === def.name)
+      .sort((a, b) => {
+        const aLower = a.name.toLowerCase();
+        const bLower = b.name.toLowerCase();
+        return aLower < bLower ? -1 : aLower > bLower ? 1 : 0;
+      });
+    const bySub = new Map();
+    for (const t of catTools) {
+      const key = t.subcategory || 'General';
+      if (!bySub.has(key)) bySub.set(key, []);
+      bySub.get(key).push(t);
+    }
+    const bySubcategory = [...bySub.keys()]
+      .sort((a, b) => a < b ? -1 : a > b ? 1 : 0)
+      .map((name) => ({ name, tools: bySub.get(name) }));
+    return {
+      name: def.name,
+      slug: slugs[i],
+      tools: catTools,
+      subcategoryNames: def.subcategories || [],
+      bySubcategory,
+    };
+  });
+}
