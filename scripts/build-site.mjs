@@ -10,14 +10,15 @@
 // Independent of scripts/build.mjs (the offline single-file app) — both
 // read the same dataset, neither depends on the other's output. Unlike
 // dist/osint-explorer.html, site/ is never committed: it's generated fresh
-// by CI on every deploy (see .github/workflows/pages.yml).
+// on every deploy by Cloudflare Pages (https://osintexplorer.halans.dev),
+// which runs `npm run build:site` on push to master.
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-export const BASE_URL = 'https://halans.github.io/osint-explorer-v2/';
+export const BASE_URL = 'https://osintexplorer.halans.dev/';
 
 export function slugify(name) {
   return name
@@ -126,7 +127,9 @@ export function renderToolCard(t) {
   const desc = t.description
     ? `<p class="desc">${escapeHtml(t.description)}</p>`
     : `<p class="desc missing">No description verified yet.</p>`;
-  return `<article class="${t.retired ? 'retired' : ''}">
+  // The id lets the site search results deep-link straight to this card.
+  const idAttr = t.id ? ` id="${escapeHtml(t.id)}"` : '';
+  return `<article${idAttr} class="${t.retired ? 'retired' : ''}">
   <div class="top">
     <h3><a href="${escapeHtml(t.url)}" target="_blank" rel="${rel}">${escapeHtml(t.name)}</a></h3>
     <div class="host">${escapeHtml(hostOf(t.url))}</div>
@@ -200,7 +203,8 @@ ${robots ? `<meta name="robots" content="${robots}">\n` : ''}<link rel="canonica
 <meta name="twitter:description" content="${escapeHtml(description)}">`;
 }
 
-function basePage({ head, body, jsonLd, cssHref }) {
+function basePage({ head, body, jsonLd, cssHref, searchJsHref }) {
+  const searchScript = searchJsHref ? `\n<script src="${searchJsHref}" defer></script>` : '';
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -211,10 +215,24 @@ ${head}
 <script type="application/ld+json">${escapeJsonLd(JSON.stringify(jsonLd))}</script>
 </head>
 <body>
-${body}
+${body}${searchScript}
 </body>
 </html>
 `;
+}
+
+// Shared header markup for every page: brand link, the client-side search box
+// (wired up by assets/search.js), and a link to the full interactive app —
+// `homeHref`/`appHref` are relative and differ by how deep the page sits.
+function siteHeader({ homeHref, appHref }) {
+  return `<header><div class="bar">
+  <a class="brand" href="${homeHref}">OSINT<span>/</span>Explorer</a>
+  <div class="sitesearch">
+    <input type="search" id="ss-q" placeholder="Search tools…" autocomplete="off" aria-label="Search tools">
+    <div id="ss-results" class="ss-results" hidden></div>
+  </div>
+  <a class="applink" href="${appHref}">Full search app →</a>
+</div></header>`;
 }
 
 export function renderHomePage(ds, categories, { baseUrl }) {
@@ -224,16 +242,16 @@ export function renderHomePage(ds, categories, { baseUrl }) {
     <h2>${escapeHtml(c.name)}</h2>
     <p>${escapeHtml(categoryLeadSentence(c))}</p>
   </a>`).join('\n');
-  const body = `<header><div class="bar"><a class="brand" href="./">OSINT<span>/</span>Explorer</a></div></header>
+  const body = `${siteHeader({ homeHref: './', appHref: 'app/' })}
 <main class="shell">
   <h1>OSINT Explorer</h1>
   <p class="lead">${escapeHtml(description)}</p>
   <p class="stats">${ds.stats.live} live tools · ${ds.stats.categories} categories · updated ${ds.generatedAt.slice(0, 10)}</p>
   <div class="grid catgrid">${cards}</div>
-  <p class="cta">Want to search and filter interactively? Clone the repo and open <code>dist/osint-explorer.html</code>, or install the CLI — <a href="https://github.com/halans/osint-explorer-v2">halans/osint-explorer-v2</a> on GitHub.</p>
+  <p class="cta">Want the full faceted search and filter experience? Open the <a href="app/">interactive explorer</a>, or clone the repo and install the CLI — <a href="https://github.com/halans/osint-explorer-v2">halans/osint-explorer-v2</a> on GitHub.</p>
 </main>
 <footer><p>Data generated ${ds.generatedAt.slice(0, 10)}.</p></footer>`;
-  return basePage({ head, body, jsonLd: buildHomeJsonLd(ds, categories, { baseUrl }), cssHref: 'assets/style.css' });
+  return basePage({ head, body, jsonLd: buildHomeJsonLd(ds, categories, { baseUrl }), cssHref: 'assets/style.css', searchJsHref: 'assets/search.js' });
 }
 
 export function renderCategoryPage(category, { baseUrl }) {
@@ -246,7 +264,7 @@ export function renderCategoryPage(category, { baseUrl }) {
       ${sub.tools.map(renderToolCard).join('\n')}
     </div>
   </section>`).join('\n');
-  const body = `<header><div class="bar"><a class="brand" href="../../">OSINT<span>/</span>Explorer</a></div></header>
+  const body = `${siteHeader({ homeHref: '../../', appHref: '../../app/' })}
 <main class="shell">
   <nav class="breadcrumb"><a href="../../">Home</a> / ${escapeHtml(category.name)}</nav>
   <h1>${escapeHtml(category.name)}</h1>
@@ -254,7 +272,7 @@ export function renderCategoryPage(category, { baseUrl }) {
   ${sections}
 </main>
 <footer><p><a href="../../">&larr; All categories</a></p></footer>`;
-  return basePage({ head, body, jsonLd: buildCategoryJsonLd(category, { baseUrl }), cssHref: '../../assets/style.css' });
+  return basePage({ head, body, jsonLd: buildCategoryJsonLd(category, { baseUrl }), cssHref: '../../assets/style.css', searchJsHref: '../../assets/search.js' });
 }
 
 export function render404({ baseUrl }) {
@@ -283,6 +301,88 @@ Sitemap: ${baseUrl}sitemap.xml
 `;
 }
 
+// Flat, cross-category index for the client-side search box. Absolute hrefs
+// (baseUrl-prefixed) so the same generated array works unmodified regardless
+// of which page depth loaded it — homepage, a category page, or the 404.
+// Description is truncated: it's only ever used for substring matching, not
+// displayed, and this asset is repeated in full on every page load until the
+// browser caches it.
+const SEARCH_DESCRIPTION_MAX = 100;
+
+export function buildSearchIndex(categories, { baseUrl }) {
+  const entries = [];
+  for (const c of categories) {
+    for (const t of c.tools) {
+      entries.push({
+        n: t.name,
+        c: c.name,
+        d: t.description ? t.description.slice(0, SEARCH_DESCRIPTION_MAX) : '',
+        h: `${baseUrl}category/${c.slug}/${t.id ? `#${t.id}` : ''}`,
+      });
+    }
+  }
+  return entries;
+}
+
+// Vanilla JS, no dependencies. Builds result elements via createElement/
+// textContent (not innerHTML) so dataset-controlled tool names/categories
+// can never be interpreted as markup — same discipline as the tool-card
+// rendering in scripts/build.mjs.
+const SEARCH_SCRIPT = `(function () {
+  var input = document.getElementById('ss-q');
+  var box = document.getElementById('ss-results');
+  if (!input || !box || typeof SEARCH_INDEX === 'undefined') return;
+
+  function renderResults(list) {
+    box.textContent = '';
+    if (!list.length) {
+      var empty = document.createElement('div');
+      empty.className = 'ss-empty';
+      empty.textContent = 'No matches';
+      box.appendChild(empty);
+      box.hidden = false;
+      return;
+    }
+    var frag = document.createDocumentFragment();
+    list.slice(0, 25).forEach(function (e) {
+      var a = document.createElement('a');
+      a.href = e.h;
+      var name = document.createElement('span');
+      name.className = 'ss-name';
+      name.textContent = e.n;
+      var cat = document.createElement('span');
+      cat.className = 'ss-cat';
+      cat.textContent = e.c;
+      a.appendChild(name);
+      a.appendChild(cat);
+      frag.appendChild(a);
+    });
+    box.appendChild(frag);
+    box.hidden = false;
+  }
+
+  input.addEventListener('input', function () {
+    var q = input.value.trim().toLowerCase();
+    if (!q) { box.hidden = true; box.textContent = ''; return; }
+    renderResults(SEARCH_INDEX.filter(function (e) {
+      return e.n.toLowerCase().indexOf(q) !== -1
+        || e.c.toLowerCase().indexOf(q) !== -1
+        || (e.d && e.d.toLowerCase().indexOf(q) !== -1);
+    }));
+  });
+  input.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') { input.value = ''; box.hidden = true; box.textContent = ''; }
+  });
+  document.addEventListener('click', function (evt) {
+    if (evt.target !== input && !box.contains(evt.target)) box.hidden = true;
+  });
+})();
+`;
+
+export function buildSearchAssetJs(categories, { baseUrl }) {
+  return `const SEARCH_INDEX = ${JSON.stringify(buildSearchIndex(categories, { baseUrl }))};\n${SEARCH_SCRIPT}`;
+}
+
 const STYLE_CSS = `:root {
   --bg: #0b0f14; --panel: #111820; --panel-2: #161f29;
   --line: #223040; --line-soft: #1a2532;
@@ -299,9 +399,19 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 header { border-bottom: 1px solid var(--line); }
-.bar { max-width: 1100px; margin: 0 auto; padding: 14px 24px; }
-.brand { font-weight: 700; font-size: 19px; color: var(--ink); }
+.bar { max-width: 1100px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.brand { font-weight: 700; font-size: 19px; color: var(--ink); white-space: nowrap; }
 .brand span { color: var(--accent); }
+.sitesearch { position: relative; flex: 1 1 240px; }
+.sitesearch #ss-q { width: 100%; padding: 8px 10px; background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; font-family: var(--sans); font-size: 13px; }
+.sitesearch #ss-q:focus { outline: none; border-color: var(--accent); }
+.ss-results { position: absolute; top: 100%; left: 0; right: 0; margin-top: 4px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; max-height: 320px; overflow-y: auto; z-index: 50; }
+.ss-results a { display: flex; justify-content: space-between; gap: 10px; padding: 8px 10px; color: var(--ink); font-size: 13px; border-bottom: 1px solid var(--line-soft); }
+.ss-results a:last-child { border-bottom: none; }
+.ss-results a:hover { background: var(--panel-2); text-decoration: none; }
+.ss-cat { color: var(--ink-faint); font-family: var(--mono); font-size: 11px; white-space: nowrap; }
+.ss-empty { padding: 10px; color: var(--ink-faint); font-size: 13px; }
+.applink { font-size: 12.5px; color: var(--accent); white-space: nowrap; }
 .shell { max-width: 1100px; margin: 0 auto; padding: 22px 24px 60px; }
 h1 { font-size: 26px; margin: 0 0 8px; }
 h2 { font-size: 18px; margin: 28px 0 10px; }
@@ -334,14 +444,27 @@ function loadDataset() {
   return JSON.parse(readFileSync(join(ROOT, 'data/tools.enriched.json'), 'utf8'));
 }
 
+// Publishes the already-built interactive app (npm run build) alongside the
+// static site, so GitHub Pages visitors get full faceted search without
+// cloning the repo. A no-op (returns false) if dist/ hasn't been built yet.
+function copyInteractiveApp() {
+  const src = join(ROOT, 'dist/osint-explorer.html');
+  if (!existsSync(src)) return false;
+  mkdirSync(join(ROOT, 'site/app'), { recursive: true });
+  writeFileSync(join(ROOT, 'site/app/index.html'), readFileSync(src, 'utf8'));
+  return true;
+}
+
 function writeSite(ds) {
   const categories = groupByCategory(ds.tools, ds.categories);
   const lastmod = ds.generatedAt.slice(0, 10);
 
   mkdirSync(join(ROOT, 'site/assets'), { recursive: true });
   writeFileSync(join(ROOT, 'site/assets/style.css'), STYLE_CSS);
+  writeFileSync(join(ROOT, 'site/assets/search.js'), buildSearchAssetJs(categories, { baseUrl: BASE_URL }));
   writeFileSync(join(ROOT, 'site/index.html'), renderHomePage(ds, categories, { baseUrl: BASE_URL }));
   writeFileSync(join(ROOT, 'site/404.html'), render404({ baseUrl: BASE_URL }));
+  const appPublished = copyInteractiveApp();
 
   for (const category of categories) {
     const dir = join(ROOT, 'site/category', category.slug);
@@ -353,11 +476,14 @@ function writeSite(ds) {
   writeFileSync(join(ROOT, 'site/sitemap.xml'), buildSitemap(paths, { baseUrl: BASE_URL, lastmod }));
   writeFileSync(join(ROOT, 'site/robots.txt'), buildRobotsTxt(BASE_URL));
 
-  return categories;
+  return { categories, appPublished };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   const ds = loadDataset();
-  const categories = writeSite(ds);
+  const { categories, appPublished } = writeSite(ds);
   console.log(`site/  ${categories.length} category pages, ${ds.stats.live} live tools`);
+  console.log(appPublished
+    ? 'site/app/  interactive explorer published (from dist/osint-explorer.html)'
+    : 'site/app/  skipped — run `npm run build` first to publish the interactive explorer');
 }

@@ -14,6 +14,7 @@ import {
   mapKindToSchemaType, groupByCategory, leadSentence, categoryLeadSentence, renderToolCard,
   buildToolListItem, buildCategoryJsonLd, buildHomeJsonLd,
   renderHomePage, renderCategoryPage, render404, buildSitemap, buildRobotsTxt,
+  buildSearchIndex, buildSearchAssetJs,
 } from '../scripts/build-site.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -122,6 +123,12 @@ test('renderToolCard falls back to placeholder text when description is missing'
   assert.match(renderToolCard(t), /No description verified yet\./);
 });
 
+test('renderToolCard sets an id attribute from the tool id, and omits it when absent', () => {
+  const base = { name: 'X', url: 'https://example.com', kind: 'software', access: 'unknown', targets: [], regions: [], retired: false, description: null };
+  assert.match(renderToolCard({ ...base, id: 'mapping-gods-eye-view' }), /<article id="mapping-gods-eye-view"/);
+  assert.doesNotMatch(renderToolCard(base), /<article id="/);
+});
+
 test('buildToolListItem maps kind to a schema.org type and includes description only when present', () => {
   const withDesc = buildToolListItem({ name: 'X', url: 'https://x.example', kind: 'dataset', description: 'd' }, 1);
   assert.equal(withDesc.item['@type'], 'Dataset');
@@ -167,6 +174,14 @@ test('renderHomePage links to every category and to the GitHub repo', dataOpts, 
   assert.match(html, /href="https:\/\/github\.com\/halans\/osint-explorer-v2"/);
 });
 
+test('renderHomePage includes the site search box and loads the search script and app link relative to the page root', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const html = renderHomePage(ds, categories, { baseUrl: BASE_URL });
+  assert.match(html, /<input type="search" id="ss-q"/);
+  assert.match(html, /<script src="assets\/search\.js" defer><\/script>/);
+  assert.match(html, /class="applink" href="app\/"/);
+});
+
 test('renderCategoryPage has exactly one h1, an h2 per subcategory, and a breadcrumb', dataOpts, () => {
   const categories = groupByCategory(ds.tools, ds.categories);
   const category = categories.find((c) => c.bySubcategory.length > 1) || categories[0];
@@ -175,6 +190,15 @@ test('renderCategoryPage has exactly one h1, an h2 per subcategory, and a breadc
   assert.equal((html.match(/<h2[ >]/g) || []).length, category.bySubcategory.length);
   assert.match(html, /class="breadcrumb"/);
   assert.match(html, new RegExp(`<link rel="canonical" href="${BASE_URL}category/${category.slug}/">`));
+});
+
+test('renderCategoryPage includes the site search box and loads the search script and app link relative to its depth', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const category = categories[0];
+  const html = renderCategoryPage(category, { baseUrl: BASE_URL });
+  assert.match(html, /<input type="search" id="ss-q"/);
+  assert.match(html, /<script src="\.\.\/\.\.\/assets\/search\.js" defer><\/script>/);
+  assert.match(html, /class="applink" href="\.\.\/\.\.\/app\/"/);
 });
 
 test('renderCategoryPage includes every tool name from that category', dataOpts, () => {
@@ -224,6 +248,37 @@ test('buildRobotsTxt allows everything and points at the sitemap under the base 
   assert.match(txt, new RegExp(`Sitemap: ${BASE_URL}sitemap\\.xml`));
 });
 
+test('every live tool id is unique, so search deep-links and article ids never collide', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const ids = categories.flatMap((c) => c.tools).map((t) => t.id).filter(Boolean);
+  assert.equal(new Set(ids).size, ids.length, 'duplicate tool ids would make #id anchors ambiguous');
+});
+
+test('buildSearchIndex has one entry per tool, with an absolute href pointing at its category page and id anchor', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const index = buildSearchIndex(categories, { baseUrl: BASE_URL });
+  const totalTools = categories.reduce((n, c) => n + c.tools.length, 0);
+  assert.equal(index.length, totalTools);
+  const withId = categories.flatMap((c) => c.tools).find((t) => t.id);
+  assert.ok(withId, 'fixture dataset needs at least one tool with an id');
+  const entry = index.find((e) => e.n === withId.name);
+  assert.ok(entry, `no search-index entry for ${withId.name}`);
+  const category = categories.find((c) => c.tools.includes(withId));
+  assert.equal(entry.h, `${BASE_URL}category/${category.slug}/#${withId.id}`);
+});
+
+test('buildSearchAssetJs embeds a parseable SEARCH_INDEX array followed by the filter script', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const js = buildSearchAssetJs(categories, { baseUrl: BASE_URL });
+  const m = js.match(/^const SEARCH_INDEX = (\[.*?\]);\n/s);
+  assert.ok(m, 'SEARCH_INDEX assignment not found or not on the first line');
+  const index = JSON.parse(m[1]);
+  assert.equal(index.length, categories.reduce((n, c) => n + c.tools.length, 0));
+  assert.match(js, /getElementById\('ss-q'\)/);
+  assert.match(js, /createElement/);
+  assert.doesNotMatch(js, /innerHTML/, 'search script must build DOM via createElement/textContent, not innerHTML');
+});
+
 test('npm run build:site writes a complete site/ tree', dataOpts, () => {
   execFileSync('node', [join(ROOT, 'scripts/build-site.mjs')], { encoding: 'utf8' });
   const categories = groupByCategory(ds.tools, ds.categories);
@@ -232,7 +287,21 @@ test('npm run build:site writes a complete site/ tree', dataOpts, () => {
   assert.ok(existsSync(join(ROOT, 'site/robots.txt')));
   assert.ok(existsSync(join(ROOT, 'site/404.html')));
   assert.ok(existsSync(join(ROOT, 'site/assets/style.css')));
+  assert.ok(existsSync(join(ROOT, 'site/assets/search.js')));
   for (const c of categories) {
     assert.ok(existsSync(join(ROOT, 'site/category', c.slug, 'index.html')), `missing page for ${c.slug}`);
+  }
+});
+
+test('npm run build:site publishes the interactive app when dist/osint-explorer.html exists', dataOpts, () => {
+  const distApp = join(ROOT, 'dist/osint-explorer.html');
+  const hasDistApp = existsSync(distApp);
+  execFileSync('node', [join(ROOT, 'scripts/build-site.mjs')], { encoding: 'utf8' });
+  const publishedApp = join(ROOT, 'site/app/index.html');
+  if (hasDistApp) {
+    assert.ok(existsSync(publishedApp), 'site/app/index.html should exist when dist/osint-explorer.html is present');
+    assert.equal(readFileSync(publishedApp, 'utf8'), readFileSync(distApp, 'utf8'));
+  } else {
+    assert.ok(!existsSync(publishedApp), 'site/app/index.html should not be written when there is no dist/osint-explorer.html to copy');
   }
 });
