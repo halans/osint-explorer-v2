@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
+    color-scheme: dark;
     --bg: #0b0f14;
     --panel: #111820;
     --panel-2: #161f29;
@@ -49,7 +50,7 @@
     border-bottom: 1px solid var(--line);
   }
   .bar { max-width: 1440px; margin: 0 auto; padding: 14px 24px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
-  .brand { font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -.01em; white-space: nowrap; }
+  .brand { font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -.01em; white-space: nowrap; color: var(--ink); }
   .brand span { color: var(--accent); }
   .searchwrap { flex: 1 1 340px; position: relative; display: flex; align-items: center; }
   #q {
@@ -175,7 +176,7 @@
 <body>
 <header>
   <div class="bar">
-    <div class="brand">OSINT<span>/</span>Explorer</div>
+    <a class="brand" href="../" title="Back to OSINT Explorer">OSINT<span>/</span>Explorer</a>
     <div class="searchwrap">
       <span class="mag">⌕</span>
       <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder='search — try  target:geo  access:free  kind:feed  region:AU'>
