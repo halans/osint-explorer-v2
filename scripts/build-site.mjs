@@ -303,6 +303,11 @@ Sitemap: ${baseUrl}sitemap.xml
 // Flat, cross-category index for the client-side search box. Absolute hrefs
 // (baseUrl-prefixed) so the same generated array works unmodified regardless
 // of which page depth loaded it — homepage, a category page, or the 404.
+// Description is truncated: it's only ever used for substring matching, not
+// displayed, and this asset is repeated in full on every page load until the
+// browser caches it.
+const SEARCH_DESCRIPTION_MAX = 100;
+
 export function buildSearchIndex(categories, { baseUrl }) {
   const entries = [];
   for (const c of categories) {
@@ -310,7 +315,7 @@ export function buildSearchIndex(categories, { baseUrl }) {
       entries.push({
         n: t.name,
         c: c.name,
-        d: t.description || '',
+        d: t.description ? t.description.slice(0, SEARCH_DESCRIPTION_MAX) : '',
         h: `${baseUrl}category/${c.slug}/${t.id ? `#${t.id}` : ''}`,
       });
     }

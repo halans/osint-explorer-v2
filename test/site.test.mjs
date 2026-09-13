@@ -248,6 +248,12 @@ test('buildRobotsTxt allows everything and points at the sitemap under the base 
   assert.match(txt, new RegExp(`Sitemap: ${BASE_URL}sitemap\\.xml`));
 });
 
+test('every live tool id is unique, so search deep-links and article ids never collide', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const ids = categories.flatMap((c) => c.tools).map((t) => t.id).filter(Boolean);
+  assert.equal(new Set(ids).size, ids.length, 'duplicate tool ids would make #id anchors ambiguous');
+});
+
 test('buildSearchIndex has one entry per tool, with an absolute href pointing at its category page and id anchor', dataOpts, () => {
   const categories = groupByCategory(ds.tools, ds.categories);
   const index = buildSearchIndex(categories, { baseUrl: BASE_URL });
