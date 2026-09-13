@@ -66,6 +66,9 @@ export function mapKindToSchemaType(kind) {
 export function groupByCategory(tools, categoryDefs) {
   const slugs = slugifyAll(categoryDefs.map((c) => c.name));
   return categoryDefs.map((def, i) => {
+    // Plain codepoint comparison, not .localeCompare(): the real dataset has
+    // names with curly apostrophes whose locale-aware order disagrees with
+    // this file's own tests, which check sort order via plain Array.sort().
     const catTools = tools
       .filter((t) => t.category === def.name)
       .sort((a, b) => {
