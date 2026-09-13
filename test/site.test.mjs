@@ -12,6 +12,7 @@ import {
   BASE_URL, slugify, slugifyAll, escapeHtml, escapeJsonLd, hostOf,
   mapKindToSchemaType, groupByCategory, leadSentence, categoryLeadSentence, renderToolCard,
   buildToolListItem, buildCategoryJsonLd, buildHomeJsonLd,
+  renderHomePage, renderCategoryPage, render404,
 } from '../scripts/build-site.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -145,4 +146,63 @@ test('buildHomeJsonLd lists every category as an ItemList entry', dataOpts, () =
   const jsonLd = buildHomeJsonLd(ds, categories, { baseUrl: BASE_URL });
   const collection = jsonLd['@graph'].find((n) => n['@type'] === 'CollectionPage');
   assert.equal(collection.mainEntity.itemListElement.length, categories.length);
+});
+
+test('renderHomePage has exactly one h1, a canonical link, and OG/Twitter tags', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const html = renderHomePage(ds, categories, { baseUrl: BASE_URL });
+  assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
+  assert.match(html, new RegExp(`<link rel="canonical" href="${BASE_URL}">`));
+  assert.match(html, /property="og:title"/);
+  assert.match(html, /name="twitter:card"/);
+});
+
+test('renderHomePage links to every category and to the GitHub repo', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const html = renderHomePage(ds, categories, { baseUrl: BASE_URL });
+  for (const c of categories) {
+    assert.match(html, new RegExp(`href="category/${c.slug}/"`), `missing link to ${c.slug}`);
+  }
+  assert.match(html, /href="https:\/\/github\.com\/halans\/osint-explorer-v2"/);
+});
+
+test('renderCategoryPage has exactly one h1, an h2 per subcategory, and a breadcrumb', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const category = categories.find((c) => c.bySubcategory.length > 1) || categories[0];
+  const html = renderCategoryPage(category, { baseUrl: BASE_URL });
+  assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
+  assert.equal((html.match(/<h2[ >]/g) || []).length, category.bySubcategory.length);
+  assert.match(html, /class="breadcrumb"/);
+  assert.match(html, new RegExp(`<link rel="canonical" href="${BASE_URL}category/${category.slug}/">`));
+});
+
+test('renderCategoryPage includes every tool name from that category', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const category = categories[0];
+  const html = renderCategoryPage(category, { baseUrl: BASE_URL });
+  for (const t of category.tools) {
+    assert.ok(html.includes(escapeHtml(t.name)), `${t.name} missing from its category page`);
+  }
+});
+
+function extractJsonLd(html) {
+  const m = html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s);
+  assert.ok(m, 'no JSON-LD script tag found');
+  return JSON.parse(m[1]);
+}
+
+test('a rendered category page\'s embedded JSON-LD parses and its ItemList length matches the tool count', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  for (const category of categories) {
+    const html = renderCategoryPage(category, { baseUrl: BASE_URL });
+    const jsonLd = extractJsonLd(html);
+    const collection = jsonLd['@graph'].find((n) => n['@type'] === 'CollectionPage');
+    assert.equal(collection.mainEntity.itemListElement.length, category.tools.length, `ItemList length mismatch for ${category.slug}`);
+  }
+});
+
+test('render404 is marked noindex and links home', () => {
+  const html = render404({ baseUrl: BASE_URL });
+  assert.match(html, /name="robots" content="noindex"/);
+  assert.match(html, /href="\.\/"/);
 });

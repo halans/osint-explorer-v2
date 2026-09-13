@@ -183,3 +183,79 @@ export function buildHomeJsonLd(ds, categories, { baseUrl }) {
     ],
   };
 }
+
+function headTags({ title, description, canonical, robots }) {
+  return `<title>${escapeHtml(title)}</title>
+<meta name="description" content="${escapeHtml(description)}">
+${robots ? `<meta name="robots" content="${robots}">\n` : ''}<link rel="canonical" href="${canonical}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="${escapeHtml(title)}">
+<meta property="og:description" content="${escapeHtml(description)}">
+<meta property="og:url" content="${canonical}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="${escapeHtml(title)}">
+<meta name="twitter:description" content="${escapeHtml(description)}">`;
+}
+
+function basePage({ head, body, jsonLd, cssHref }) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+${head}
+<link rel="stylesheet" href="${cssHref}">
+<script type="application/ld+json">${escapeJsonLd(JSON.stringify(jsonLd))}</script>
+</head>
+<body>
+${body}
+</body>
+</html>
+`;
+}
+
+export function renderHomePage(ds, categories, { baseUrl }) {
+  const description = leadSentence(ds);
+  const head = headTags({ title: 'OSINT Explorer — open source intelligence tools directory', description, canonical: baseUrl });
+  const cards = categories.map((c) => `<a class="catcard" href="category/${c.slug}/">
+    <h2>${escapeHtml(c.name)}</h2>
+    <p>${escapeHtml(categoryLeadSentence(c))}</p>
+  </a>`).join('\n');
+  const body = `<header><div class="bar"><a class="brand" href="./">OSINT<span>/</span>Explorer</a></div></header>
+<main class="shell">
+  <h1>OSINT Explorer</h1>
+  <p class="lead">${escapeHtml(description)}</p>
+  <p class="stats">${ds.stats.live} live tools · ${ds.stats.categories} categories · updated ${ds.generatedAt.slice(0, 10)}</p>
+  <div class="grid catgrid">${cards}</div>
+  <p class="cta">Want to search and filter interactively? Clone the repo and open <code>dist/osint-explorer.html</code>, or install the CLI — <a href="https://github.com/halans/osint-explorer-v2">halans/osint-explorer-v2</a> on GitHub.</p>
+</main>
+<footer><p>Data generated ${ds.generatedAt.slice(0, 10)}.</p></footer>`;
+  return basePage({ head, body, jsonLd: buildHomeJsonLd(ds, categories, { baseUrl }), cssHref: 'assets/style.css' });
+}
+
+export function renderCategoryPage(category, { baseUrl }) {
+  const catUrl = `${baseUrl}category/${category.slug}/`;
+  const description = categoryLeadSentence(category);
+  const head = headTags({ title: `${category.name} — OSINT Explorer`, description, canonical: catUrl });
+  const sections = category.bySubcategory.map((sub) => `<section>
+    <h2>${escapeHtml(sub.name)}</h2>
+    <div class="grid">
+      ${sub.tools.map(renderToolCard).join('\n')}
+    </div>
+  </section>`).join('\n');
+  const body = `<header><div class="bar"><a class="brand" href="../../">OSINT<span>/</span>Explorer</a></div></header>
+<main class="shell">
+  <nav class="breadcrumb"><a href="../../">Home</a> / ${escapeHtml(category.name)}</nav>
+  <h1>${escapeHtml(category.name)}</h1>
+  <p class="lead">${escapeHtml(description)}</p>
+  ${sections}
+</main>
+<footer><p><a href="../../">&larr; All categories</a></p></footer>`;
+  return basePage({ head, body, jsonLd: buildCategoryJsonLd(category, { baseUrl }), cssHref: '../../assets/style.css' });
+}
+
+export function render404({ baseUrl }) {
+  const head = headTags({ title: '404 — OSINT Explorer', description: 'Page not found.', canonical: `${baseUrl}404.html`, robots: 'noindex' });
+  const body = `<main class="shell"><h1>404 — page not found</h1><p><a href="./">Back to OSINT Explorer</a></p></main>`;
+  return basePage({ head, body, jsonLd: { '@context': 'https://schema.org', '@type': 'WebPage', name: '404 Not Found' }, cssHref: 'assets/style.css' });
+}
