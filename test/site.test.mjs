@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
   BASE_URL, slugify, slugifyAll, escapeHtml, escapeJsonLd, hostOf,
-  mapKindToSchemaType, groupByCategory,
+  mapKindToSchemaType, groupByCategory, leadSentence, categoryLeadSentence, renderToolCard,
 } from '../scripts/build-site.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -80,4 +80,41 @@ test('groupByCategory groups tools under their subcategory, sorted by name', dat
     const sorted = [...names].sort();
     assert.deepEqual(names, sorted, `tools in ${withSubs.slug}/${sub.name} are not sorted`);
   }
+});
+
+test('leadSentence reports live tool and category counts from the dataset', dataOpts, () => {
+  const s = leadSentence(ds);
+  assert.match(s, new RegExp(String(ds.stats.live)));
+  assert.match(s, new RegExp(String(ds.stats.categories)));
+});
+
+test('categoryLeadSentence names up to four subcategories and counts the rest', dataOpts, () => {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const big = categories.find((c) => c.subcategoryNames.length > 4);
+  assert.ok(big, 'fixture dataset needs a category with more than four subcategories');
+  const s = categoryLeadSentence(big);
+  assert.match(s, new RegExp(String(big.tools.length)));
+  assert.match(s, /and \d+ more/);
+});
+
+test('renderToolCard escapes the tool name and links to its url', () => {
+  const t = { name: 'A & B <Tool>', url: 'https://example.com/x', kind: 'software', access: 'free', targets: [], regions: [], retired: false, description: 'desc' };
+  const html = renderToolCard(t);
+  assert.match(html, /A &amp; B &lt;Tool&gt;/);
+  assert.match(html, /href="https:\/\/example\.com\/x"/);
+});
+
+test('renderToolCard marks retired tools nofollow and shows a Retired badge; live tools are not nofollow', () => {
+  const base = { name: 'X', url: 'https://example.com', kind: 'software', access: 'unknown', targets: [], regions: [], description: null };
+  const retired = renderToolCard({ ...base, retired: true });
+  const live = renderToolCard({ ...base, retired: false });
+  assert.match(retired, /rel="nofollow noopener noreferrer"/);
+  assert.match(retired, />Retired</);
+  assert.match(live, /rel="noopener noreferrer"/);
+  assert.doesNotMatch(live, /nofollow/);
+});
+
+test('renderToolCard falls back to placeholder text when description is missing', () => {
+  const t = { name: 'X', url: 'https://example.com', kind: 'software', access: 'unknown', targets: [], regions: [], retired: false, description: null };
+  assert.match(renderToolCard(t), /No description verified yet\./);
 });

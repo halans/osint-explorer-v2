@@ -91,3 +91,44 @@ export function groupByCategory(tools, categoryDefs) {
     };
   });
 }
+
+export function leadSentence(ds) {
+  return `OSINT Explorer is a directory of ${ds.stats.live} link-checked open source `
+    + `intelligence tools, datasets, and live feeds across ${ds.stats.categories} `
+    + `categories. Every entry is health-checked and described.`;
+}
+
+export function categoryLeadSentence(category) {
+  const subs = category.subcategoryNames;
+  let coverage = '';
+  if (subs.length) {
+    const shown = subs.slice(0, 4).join(', ');
+    const more = subs.length > 4 ? `, and ${subs.length - 4} more` : '';
+    coverage = `, covering ${shown}${more}`;
+  }
+  return `${category.tools.length} tools for ${category.name}${coverage}.`;
+}
+
+function renderBadges(t) {
+  const parts = [`<span class="b kind">${escapeHtml(t.kind)}</span>`];
+  if (t.access && t.access !== 'unknown') parts.push(`<span class="b access">${escapeHtml(t.access)}</span>`);
+  for (const g of t.targets.slice(0, 3)) parts.push(`<span class="b tgt">${escapeHtml(g)}</span>`);
+  for (const r of t.regions.slice(0, 2)) parts.push(`<span class="b region">${escapeHtml(r)}</span>`);
+  if (t.retired) parts.push(`<span class="b dead">Retired</span>`);
+  return parts.join('');
+}
+
+export function renderToolCard(t) {
+  const rel = t.retired ? 'nofollow noopener noreferrer' : 'noopener noreferrer';
+  const desc = t.description
+    ? `<p class="desc">${escapeHtml(t.description)}</p>`
+    : `<p class="desc missing">No description verified yet.</p>`;
+  return `<article class="${t.retired ? 'retired' : ''}">
+  <div class="top">
+    <h3><a href="${escapeHtml(t.url)}" target="_blank" rel="${rel}">${escapeHtml(t.name)}</a></h3>
+    <div class="host">${escapeHtml(hostOf(t.url))}</div>
+  </div>
+  ${desc}
+  <div class="meta">${renderBadges(t)}</div>
+</article>`;
+}
