@@ -8,6 +8,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { execFileSync } from 'node:child_process';
 import {
   BASE_URL, slugify, slugifyAll, escapeHtml, escapeJsonLd, hostOf,
   mapKindToSchemaType, groupByCategory, leadSentence, categoryLeadSentence, renderToolCard,
@@ -221,4 +222,17 @@ test('buildRobotsTxt allows everything and points at the sitemap under the base 
   const txt = buildRobotsTxt(BASE_URL);
   assert.match(txt, /Allow: \//);
   assert.match(txt, new RegExp(`Sitemap: ${BASE_URL}sitemap\\.xml`));
+});
+
+test('npm run build:site writes a complete site/ tree', dataOpts, () => {
+  execFileSync('node', [join(ROOT, 'scripts/build-site.mjs')], { encoding: 'utf8' });
+  const categories = groupByCategory(ds.tools, ds.categories);
+  assert.ok(existsSync(join(ROOT, 'site/index.html')));
+  assert.ok(existsSync(join(ROOT, 'site/sitemap.xml')));
+  assert.ok(existsSync(join(ROOT, 'site/robots.txt')));
+  assert.ok(existsSync(join(ROOT, 'site/404.html')));
+  assert.ok(existsSync(join(ROOT, 'site/assets/style.css')));
+  for (const c of categories) {
+    assert.ok(existsSync(join(ROOT, 'site/category', c.slug, 'index.html')), `missing page for ${c.slug}`);
+  }
 });

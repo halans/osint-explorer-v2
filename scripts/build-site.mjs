@@ -279,3 +279,82 @@ Allow: /
 Sitemap: ${baseUrl}sitemap.xml
 `;
 }
+
+const STYLE_CSS = `:root {
+  --bg: #0b0f14; --panel: #111820; --panel-2: #161f29;
+  --line: #223040; --line-soft: #1a2532;
+  --ink: #e6edf5; --ink-dim: #94a6bb; --ink-faint: #64798f;
+  --accent: #4cc2ff; --accent-dim: #1b4f6b;
+  --good: #5fd38d; --warn: #ffb454; --bad: #ff6b6b;
+  --sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius: 10px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.5; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header { border-bottom: 1px solid var(--line); }
+.bar { max-width: 1100px; margin: 0 auto; padding: 14px 24px; }
+.brand { font-weight: 700; font-size: 19px; color: var(--ink); }
+.brand span { color: var(--accent); }
+.shell { max-width: 1100px; margin: 0 auto; padding: 22px 24px 60px; }
+h1 { font-size: 26px; margin: 0 0 8px; }
+h2 { font-size: 18px; margin: 28px 0 10px; }
+h3 { font-size: 15px; margin: 0; }
+.lead { color: var(--ink-dim); max-width: 70ch; }
+.stats { font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint); }
+.breadcrumb { font-size: 13px; color: var(--ink-faint); margin-bottom: 14px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.catgrid a.catcard { display: block; background: var(--panel); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 16px; color: var(--ink); }
+.catgrid a.catcard:hover { border-color: var(--line); text-decoration: none; }
+.catgrid a.catcard p { color: var(--ink-dim); font-size: 13.5px; margin: 6px 0 0; }
+article { background: var(--panel); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 13px 14px; display: flex; flex-direction: column; gap: 8px; }
+article.retired { opacity: .6; }
+.host { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); }
+.desc { margin: 0; font-size: 13.5px; color: var(--ink-dim); }
+.desc.missing { font-style: italic; color: var(--ink-faint); }
+.meta { display: flex; gap: 5px; flex-wrap: wrap; }
+.b { font-family: var(--mono); font-size: 10.5px; padding: 2px 7px; border-radius: 5px; border: 1px solid var(--line); color: var(--ink-faint); }
+.b.dead { color: var(--bad); border-color: #5a2a2a; }
+.cta { color: var(--ink-dim); font-size: 13.5px; margin-top: 30px; }
+footer { max-width: 1100px; margin: 0 auto; padding: 0 24px 50px; color: var(--ink-faint); font-size: 12.5px; }
+code { font-family: var(--mono); font-size: 11px; background: var(--panel); border: 1px solid var(--line-soft); border-radius: 5px; padding: 2px 6px; }
+@media (max-width: 860px) {
+  .shell, .bar, footer { padding-left: 14px; padding-right: 14px; }
+  .grid { grid-template-columns: 1fr; }
+}
+`;
+
+function loadDataset() {
+  return JSON.parse(readFileSync(join(ROOT, 'data/tools.enriched.json'), 'utf8'));
+}
+
+function writeSite(ds) {
+  const categories = groupByCategory(ds.tools, ds.categories);
+  const lastmod = ds.generatedAt.slice(0, 10);
+
+  mkdirSync(join(ROOT, 'site/assets'), { recursive: true });
+  writeFileSync(join(ROOT, 'site/assets/style.css'), STYLE_CSS);
+  writeFileSync(join(ROOT, 'site/index.html'), renderHomePage(ds, categories, { baseUrl: BASE_URL }));
+  writeFileSync(join(ROOT, 'site/404.html'), render404({ baseUrl: BASE_URL }));
+
+  for (const category of categories) {
+    const dir = join(ROOT, 'site/category', category.slug);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(join(dir, 'index.html'), renderCategoryPage(category, { baseUrl: BASE_URL }));
+  }
+
+  const paths = ['', ...categories.map((c) => `category/${c.slug}/`)];
+  writeFileSync(join(ROOT, 'site/sitemap.xml'), buildSitemap(paths, { baseUrl: BASE_URL, lastmod }));
+  writeFileSync(join(ROOT, 'site/robots.txt'), buildRobotsTxt(BASE_URL));
+
+  return categories;
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const ds = loadDataset();
+  const categories = writeSite(ds);
+  console.log(`site/  ${categories.length} category pages, ${ds.stats.live} live tools`);
+}
