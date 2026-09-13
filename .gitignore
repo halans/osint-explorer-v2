@@ -28,3 +28,6 @@ coverage/
 # Temporary files
 *.tmp
 .cache/
+
+# Generated static site (CI builds this fresh on every deploy)
+site/
