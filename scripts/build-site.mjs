@@ -10,14 +10,15 @@
 // Independent of scripts/build.mjs (the offline single-file app) — both
 // read the same dataset, neither depends on the other's output. Unlike
 // dist/osint-explorer.html, site/ is never committed: it's generated fresh
-// by CI on every deploy (see .github/workflows/pages.yml).
+// on every deploy by Cloudflare Pages (https://osintexplorer.halans.dev),
+// which runs `npm run build:site` on push to master.
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-export const BASE_URL = 'https://halans.github.io/osint-explorer-v2/';
+export const BASE_URL = 'https://osintexplorer.halans.dev/';
 
 export function slugify(name) {
   return name
