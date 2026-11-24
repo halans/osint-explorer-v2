@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-11-24T09:10:03.558Z",
+  "total": 1,
+  "counts": {
+    "alive": 1
+  },
+  "results": [
+    {
+      "id": "area-and-event-monitoring-h1dr4-police-incident-map",
+      "name": "H1DR4 Police Incident Map",
+      "url": "https://h1dr4.dev/map",
+      "status": "alive",
+      "httpStatus": 200,
+      "finalUrl": null,
+      "title": "Follow the evidence. | H1DR4",
+      "ms": 405,
+      "error": null
+    }
+  ]
+}
